@@ -23,7 +23,6 @@ public class CameraController : MonoBehaviour
     float _velocityX, _velocityY;
     float _deceleration = 1.1f;
 
-
     // Initialize controller
     void Start()
     {
