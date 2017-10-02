@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     Sprite _compass, _arrows;
 
     float _mouseSensitivity = 70f;
-    float _touchSensitivity = 3f;
+    float _touchSensitivity = 2.0f;
     float _rotationX = 0.0f;
     float _rotationY = 0.0f;
     float _velocityX, _velocityY;
