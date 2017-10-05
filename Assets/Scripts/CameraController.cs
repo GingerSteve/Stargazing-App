@@ -10,12 +10,12 @@ public class CameraController : MonoBehaviour
         Mouse
     };
 
+    public Sprite CompassSprite, ArrowsSprite;
+    public Image ModeButton;
+
     ControlMode _mode;
-    Image _modeButton;
     Quaternion _origRotation;
     Gyroscope _gyro;
-    Sprite _compass, _arrows;
-
     float _mouseSensitivity = 70f;
     float _touchSensitivity = 2.0f;
     float _rotationX = 0.0f;
@@ -45,14 +45,9 @@ public class CameraController : MonoBehaviour
 
         _origRotation = transform.rotation;
 
-        // Load images
-        _compass = Resources.Load<Sprite>("compass");
-        _arrows = Resources.Load<Sprite>("arrows");
-
         // Get the button for switching modes
-        _modeButton = GameObject.Find("ModeButton").GetComponent<Image>();
         if (SystemInfo.deviceType != DeviceType.Handheld || !SystemInfo.supportsGyroscope)
-            _modeButton.enabled = false;
+            ModeButton.enabled = false;
         else
             SetImageSource();
 
@@ -112,8 +107,6 @@ public class CameraController : MonoBehaviour
     /// <summary> Decreases the X and Y velocity, and rotates the camera </summary>
     void DecelerateCamera()
     {
-        //If the mouse is done moving, decelerate until stopping
-
         bool move = false;
 
         // Get the new speed (without direction), after deceleration
@@ -146,9 +139,7 @@ public class CameraController : MonoBehaviour
             _velocityY = 0;
 
         if (move)
-        {
             RotateCamera();
-        }
     }
 
     /// <summary> Toggle the control mode between gyroscope controls and touch controls </summary>
@@ -164,8 +155,8 @@ public class CameraController : MonoBehaviour
     public void SetImageSource()
     {
         if (_mode == ControlMode.Gyro)
-            _modeButton.sprite = _arrows;
+            ModeButton.sprite = ArrowsSprite;
         else
-            _modeButton.sprite = _compass;
+            ModeButton.sprite = CompassSprite;
     }
 }

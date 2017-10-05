@@ -465,6 +465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b32ab854c26a9f45b5037c6f798cba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CompassSprite: {fileID: 21300000, guid: 26458ba7a85dda247ad357800317506a, type: 3}
+  ArrowsSprite: {fileID: 21300000, guid: 8b753cf77c4c65f40aae643f1b698d6a, type: 3}
+  ModeButton: {fileID: 456694123}
 --- !u!45 &1562572282
 Skybox:
   m_ObjectHideFlags: 0
