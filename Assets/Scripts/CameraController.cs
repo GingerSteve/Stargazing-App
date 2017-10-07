@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
 
     public Sprite CompassSprite, ArrowsSprite;
     public Image ModeButton;
+    public Text DebugText;
 
     ControlMode _mode;
     Quaternion _origRotation;
@@ -57,38 +58,41 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_mode == ControlMode.Mouse)
+        if (enabled)
         {
-            if (Input.GetMouseButton(0))
+            if (_mode == ControlMode.Mouse)
             {
-                _velocityX = Input.GetAxis("Mouse X") * _mouseSensitivity * Time.deltaTime;
-                _velocityY = Input.GetAxis("Mouse Y") * _mouseSensitivity * Time.deltaTime;
+                if (Input.GetMouseButton(0))
+                {
+                    _velocityX = Input.GetAxis("Mouse X") * _mouseSensitivity * Time.deltaTime;
+                    _velocityY = Input.GetAxis("Mouse Y") * _mouseSensitivity * Time.deltaTime;
 
-                RotateCamera();
+                    RotateCamera();
+                }
+                else
+                    DecelerateCamera();
             }
-            else
-                DecelerateCamera();
-        }
-        else if (_mode == ControlMode.Touch)
-        {
-            if (Input.touches.Length > 0)
+            else if (_mode == ControlMode.Touch)
             {
-                _velocityX = Input.touches[0].deltaPosition.x * Time.deltaTime * _touchSensitivity;
-                _velocityY = Input.touches[0].deltaPosition.y * Time.deltaTime * _touchSensitivity;
+                if (Input.touches.Length > 0)
+                {
+                    _velocityX = Input.touches[0].deltaPosition.x * Time.deltaTime * _touchSensitivity;
+                    _velocityY = Input.touches[0].deltaPosition.y * Time.deltaTime * _touchSensitivity;
 
-                RotateCamera();
+                    RotateCamera();
+                }
+                else
+                    DecelerateCamera();
             }
-            else
-                DecelerateCamera();
-        }
-        else if (_mode == ControlMode.Gyro)
-        {
-            // Need to invert gyroscope z and w axis, and rotate by 90 degrees on the x axis
-            Quaternion rotate = new Quaternion(_gyro.attitude.x, _gyro.attitude.y, -_gyro.attitude.z, -_gyro.attitude.w);
-            transform.rotation = Quaternion.Euler(90, 0, 0) * rotate;
+            else if (_mode == ControlMode.Gyro)
+            {
+                // Need to invert gyroscope z and w axis, and rotate by 90 degrees on the x axis
+                Quaternion rotate = new Quaternion(_gyro.attitude.x, _gyro.attitude.y, -_gyro.attitude.z, -_gyro.attitude.w);
+                transform.rotation = Quaternion.Euler(90, 0, 0) * rotate;
 
-            _rotationX = transform.rotation.eulerAngles.y;
-            _rotationY = -transform.rotation.eulerAngles.x;
+                _rotationX = transform.rotation.eulerAngles.y;
+                _rotationY = -transform.rotation.eulerAngles.x;
+            }
         }
     }
 

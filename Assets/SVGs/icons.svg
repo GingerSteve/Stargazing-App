@@ -82,6 +82,38 @@
          result="composite2"
          id="feComposite5629" />
     </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter5061">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood5051" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite5053" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="2"
+         result="blur"
+         id="feGaussianBlur5055" />
+      <feOffset
+         dx="-1.94289e-016"
+         dy="4.57967e-015"
+         result="offset"
+         id="feOffset5057" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite5059" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -90,9 +122,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-493.29445"
-     inkscape:cy="4160.0452"
+     inkscape:zoom="0.175"
+     inkscape:cx="1221.1617"
+     inkscape:cy="3721.6917"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -110,7 +142,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -212,6 +244,36 @@
            style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
            sodipodi:type="star" />
       </g>
+    </g>
+    <g
+       id="g50"
+       inkscape:export-filename="E:\Steve\Documents\My Documents\Code\Unity\Stargazing App\Assets\Images\menu.png"
+       inkscape:export-xdpi="41.858265"
+       inkscape:export-ydpi="41.858265">
+      <rect
+         transform="matrix(0.64880275,0,0,0.54746941,-35.979361,-252.19372)"
+         y="-718.12256"
+         x="-283.84024"
+         height="15"
+         width="100"
+         id="rect4506"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.57972133;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;filter:url(#filter5061)" />
+      <rect
+         transform="matrix(0.64880275,0,0,0.54746941,-35.979361,-246.95083)"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.57972133;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;filter:url(#filter5061)"
+         id="rect4514"
+         width="100"
+         height="15"
+         x="-283.84024"
+         y="-661.46143" />
+      <rect
+         transform="matrix(0.64880275,0,0,0.54746941,-35.979361,-249.57227)"
+         y="-689.79199"
+         x="-283.84024"
+         height="15"
+         width="100"
+         id="rect4516"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.57972133;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;filter:url(#filter5061)" />
     </g>
   </g>
 </svg>
