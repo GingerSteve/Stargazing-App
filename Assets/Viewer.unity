@@ -108,6 +108,134 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &77819253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 77819254}
+  - component: {fileID: 77819255}
+  m_Layer: 8
+  m_Name: ImageContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &77819254
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 77819253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1296674284}
+  m_Father: {fileID: 2048799340}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &77819255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 77819253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: 200
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!1 &391340360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 391340361}
+  - component: {fileID: 391340363}
+  - component: {fileID: 391340362}
+  m_Layer: 5
+  m_Name: ViewerCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &391340361
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391340360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 456694121}
+  - {fileID: 676150905}
+  - {fileID: 2046715701}
+  m_Father: {fileID: 1279270167}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &391340362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391340360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &391340363
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391340360}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &456694120
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,16 +260,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 456694120}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1279270167}
+  m_Father: {fileID: 391340361}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 20, y: 20}
+  m_AnchoredPosition: {x: 20, y: 20.00003}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &456694122
@@ -218,7 +346,7 @@ GameObject:
   - component: {fileID: 491435470}
   - component: {fileID: 491435469}
   m_Layer: 8
-  m_Name: Text
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +363,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2048799340}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -274,161 +402,87 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole,
-    filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole
-    with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means
-    comfort.\r\n\r\nIt had a perfectly round door like a porthole, painted green,
-    with a shiny yellow brass knob in the exact middle. The door opened on to a tube-shaped
-    hall like a tunnel: a very comfortable tunnel without smoke, with panelled walls,
-    and floors tiled and carpeted, provided with polished chairs, and lots and lots
-    of pegs for hats and coats - the hobbit was fond of visitors. The tunnel wound
-    on and on, going fairly but not quite straight into the side of the hill - The
-    Hill, as all the people for many miles round called it - and many little round
-    doors opened out of it, first on one side and then on another. No going upstairs
-    for the hobbit: bedrooms, bathrooms, cellars, pantries (lots of these), wardrobes
-    (he had whole rooms devoted to clothes), kitchens, dining-rooms, all were on the
-    same floor, and indeed on the same passage. The best rooms were all on the left-hand
-    side (going in), for these were the only ones to have windows, deep-set round
-    windows looking over his garden and meadows beyond, sloping down to the river.\r\n\r\nThis
-    hobbit was a very well-to-do hobbit, and his name was Baggins. The Bagginses had
-    lived in the neighbourhood of The Hill for time out of mind, and people considered
-    them very respectable, not only because most of them were rich, but also because
-    they never had any adventures or did anything unexpected: you could tell what
-    a Baggins would say on any question without the bother of asking him. This is
-    a story of how a Baggins had an adventure, found himself doing and saying things
-    altogether unexpected. He may have lost the neighbours' respect, but he gained-well,
-    you will see whether he gained anything in the end.\r\n\r\nThe mother of our particular
-    hobbit... what is a hobbit? I suppose hobbits need some description nowadays,
-    since they have become rare and shy of the Big People, as they call us. They are
-    (or were) a little people, about half our height, and smaller than the bearded
-    Dwarves. Hobbits have no beards. There is little or no magic about them, except
-    the ordinary everyday sort which helps them to disappear quietly and quickly when
-    large stupid folk like you and me come blundering along, making a noise like elephants
-    which they can hear a mile off. They are inclined to be at in the stomach; they
-    dress in bright colours (chiefly green and yellow); wear no shoes, because their
-    feet grow natural leathery soles and thick warm brown hair like the stuff on their
-    heads (which is curly); have long clever brown fingers, good-natured faces, and
-    laugh deep fruity laughs (especially after dinner, which they have twice a day
-    when they can get it). Now you know enough to go on with. As I was saying, the
-    mother of this hobbit - of Bilbo Baggins, that is - was the fabulous Belladonna
-    Took, one of the three remarkable daughters of the Old Took, head of the hobbits
-    who lived across The Water, the small river that ran at the foot of The Hill.
-    It was often said (in other families) that long ago one of the Took ancestors
-    must have taken a fairy wife. That was, of course, absurd, but certainly there
-    was still something not entirely hobbit-like about them, - and once in a while
-    members of the Took-clan would go and have adventures. They discreetly disappeared,
-    and the family hushed it up; but the fact remained that the Tooks were not as
-    respectable as the Bagginses, though they were undoubtedly richer. Not that Belladonna
-    Took ever had any adventures after she became Mrs. Bungo Baggins. Bungo, that
-    was Bilbo's father, built the most luxurious hobbit-hole for her (and partly with
-    her money) that was to be found either under The Hill or over The Hill or across
-    The Water, and there they remained to the end of their days. Still it is probable
-    that Bilbo, her only son, although he looked and behaved exactly like a second
-    edition of his solid and comfortable father, got something a bit queer in his
-    makeup from the Took side, something that only waited for a chance to come out.
-    The chance never arrived, until Bilbo Baggins was grown up, being about fifty
-    years old or so, and living in the beautiful hobbit-hole built by his father,
-    which I have just described for you, until he had in fact apparently settled down
-    immovably.\r\n\r\nBy some curious chance one morning long ago in the quiet of
-    the world, when there was less noise and more green, and the hobbits were still
-    numerous and prosperous, and Bilbo Baggins was standing at his door after breakfast
-    smoking an enormous long wooden pipe that reached nearly down to his woolly toes
-    (neatly brushed) - Gandalf came by. Gandalf! If you had heard only a quarter of
-    what I have heard about him, and I have only heard very little of all there is
-    to hear, you would be prepared for any sort I of remarkable tale. Tales and adventures
-    sprouted up all over the place wherever he went, in the most extraordinary fashion.
-    He had not been down that way under The Hill for ages and ages, not since his
-    friend the Old Took died, in fact, and the hobbits had almost forgotten what he
-    looked like. He had been away over The Hill and across The Water on business of
-    his own since they were all small hobbit-boys and hobbit-girls.\r\n\r\nAll that
-    the unsuspecting Bilbo saw that morning was an old man with a staff. He had a
-    tall pointed blue hat, a long grey cloak, a silver scarf over which a white beard
-    hung down below his waist, and immense black boots. \"Good morning!\" said Bilbo,
-    and he meant it. The sun was shining, and the grass was very green. But Gandalf
-    looked at him from under long bushy eyebrows that stuck out further than the brim
-    of his shady hat. \"What do you mean?\" be said. \"Do you wish me a good morning,
-    or mean that it is a good morning whether I want not; or that you feel good this
-    morning; or that it is morning to be good on?\"\r\n\r\n\"All of them at once,\"
-    said Bilbo. \"And a very fine morning for a pipe of tobacco out of doors, into
-    the bargain. If you have a pipe about you, sit down and have a fill of mine! There's
-    no hurry, we have all the day before us!\" Then Bilbo sat down on a seat by his
-    door, crossed his legs, and blew out a beautiful grey ring of smoke that sailed
-    up into the air without breaking and floated away over The Hill.\r\n\r\n\"Very
-    pretty!\" said Gandalf. \"But I have no time to blow smoke-rings this morning.
-    I am looking for someone to share in an adventure that I am arranging, and it's
-    very difficult to find anyone.\"\r\n\r\nI should think so - in these parts! We
-    are plain quiet folk and have no use for adventures. Nasty disturbing uncomfortable
-    things! Make you late for dinner! I can't think what anybody sees in them, said
-    our Mr. Baggins, and stuck one thumb behind his braces, and blew out another even
-    bigger smoke-ring. Then he took out his morning letters, and begin to read, pretending
-    to take no more notice of the old man. He had decided that he was not quite his
-    sort, and wanted him to go away. But the old man did not move. He stood leaning
-    on his stick and gazing at the hobbit without saying anything, till Bilbo got
-    quite uncomfortable and even a little cross.\r\n\r\n\"Good morning!\" he said
-    at last. \"We don't want any adventures here, thank you! You might try over The
-    Hill or across The Water.\" By this he meant that the conversation was at an end.\r\n\r\n\"What
-    a lot of things you do use Good morning for!\" said Gandalf. \"Now you mean that
-    you want to get rid of me, and that it won't be good till I move off.\"\r\n\r\n\"Not
-    at all, not at all, my dear sir! Let me see, I don't think I know your name?\"\r\n\r\n\"Yes,
-    yes, my dear sir - and I do know your name, Mr. Bilbo Baggins. And you do know
-    my name, though you don't remember that I belong to it. I am Gandalf, and Gandalf
-    means me! To think that I should have lived to be good-morninged by Belladonna
-    Took's son, as if I was selling buttons at the door!\" \"Gandalf, Gandalf! Good
-    gracious me! Not the wandering wizard that gave Old Took a pair of magic diamond
-    studs that fastened themselves and never came undone till ordered? Not the fellow
-    who used to tell such wonderful tales at parties, about dragons and goblins and
-    giants and the rescue of princesses and the unexpected luck of widows' sons? Not
-    the man that used to make such particularly excellent fireworks! I remember those!
-    Old Took used to have them on Midsummer's Eve. Splendid! They used to go up like
-    great lilies and snapdragons and laburnums of fire and hang in the twilight all
-    evening!\" You will notice already that Mr. Baggins was not quite so prosy as
-    he liked to believe, also that he was very fond of flowers. \"Dear me!\" she went
-    on. \"Not the Gandalf who was responsible for so many quiet lads and lasses going
-    off into the Blue for mad adventures. Anything from climbing trees to visiting
-    Elves - or sailing in ships, sailing to other shores! Bless me, life used to be
-    quite inter - I mean, you used to upset things badly in these parts once upon
-    a time. I beg your pardon, but I had no idea you were still in business.\" \"Where
-    else should I be?\" said the wizard. \"All the same I am pleased to find you remember
-    something about me. You seem to remember my fireworks kindly, at any rate, land
-    that is not without hope. Indeed for your old grand-father Took's sake, and for
-    the sake of poor Belladonna, I will give you what you asked for.\"\r\n\r\n\"I
-    beg your pardon, I haven't asked for anything!\"\r\n\r\n\"Yes, you have! Twice
-    now. My pardon. I give it you. In fact I will go so far as to send you on this
-    adventure. Very amusing for me, very good for you and profitable too, very likely,
-    if you ever get over it.\"\r\n\r\n\"Sorry! I don't want any adventures, thank
-    you. Not today. Good morning!\r\n\r\nBut please come to tea - any time you like!
-    Why not tomorrow? Come tomorrow!\r\n\r\nGood-bye!\"\r\n\r\nWith that the hobbit
-    turned and scuttled inside his round green door, and shut it as quickly as he
-    dared, not to seen rude. Wizards after all are wizards.\r\n\r\n\"What on earth
-    did I ask him to tea for!\" he said to him-self, as he went\r\n\r\nto the pantry.
-    He had only just had break fast, but he thought a cake or two and a drink of something
-    would do him good after his fright. Gandalf in the meantime was still standing
-    outside the door, and laughing long but quietly. After a while he stepped up,
-    and with the spike of his staff scratched a queer sign on the hobbit's beautiful
-    green front-door. Then he strode away, just about the time when Bilbo was finishing
-    his second cake and beginning to think that he had escape adventures very well.\r\n\r\nThe
-    next day he had almost forgotten about Gandalf. He did not remember things very
-    well, unless he put them down on his Engagement Tablet: like this:\r\n\r\nGandalf
-    'a Wednesday. Yesterday he had been too flustered to do anything of the kind.
-    Just before tea-time there came a tremendous ring on the front-door bell, and
-    then he remembered! He rushed and put on the kettle, and put out another cup and
-    saucer and an extra cake or two, and ran to the door. \"I am so sorry to keep
-    you waiting!\" he was going to say, when he saw that it was not Gandalf at all.
-    It was a dwarf with a blue beard tucked into a golden belt, and very bright eyes
-    under his dark-green hood. As soon a the door was opened, he pushed inside, just
-    as if he had been expected. He hung his hooded cloak on the nearest peg, and \"Dwalin
-    at your service!\" he said with a low bow.\r\n\r\n\"Bilbo Baggins at yours!\"
-    said the hobbit, too surprised to ask any questions for the moment. When the silence
-    that followed had become uncomfortable, he added: \"I am just about to take tea;
-    pray come and have some with me.\" A little stiff perhaps, but he meant it kindly.
-    And what would you do, if an uninvited dwarf came and hung his things up in your
-    hall without a word of explanation?"
+  m_Text: Description text
 --- !u!222 &491435470
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 491435467}
+--- !u!1 &563356048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 563356049}
+  - component: {fileID: 563356051}
+  - component: {fileID: 563356050}
+  m_Layer: 8
+  m_Name: NameText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &563356049
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563356048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1324835030}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -150, y: -20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &563356050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563356048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 32
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 18
+    m_MaxSize: 32
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Constellation Name
+--- !u!222 &563356051
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563356048}
 --- !u!1 &676150904
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,16 +507,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 676150904}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1279270167}
+  m_Father: {fileID: 391340361}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -10}
+  m_AnchoredPosition: {x: 10, y: -9.999939}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &676150906
@@ -514,7 +568,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 840913492}
+        - m_Target: {fileID: 1279270168}
           m_MethodName: SwitchCanvas
           m_Mode: 1
           m_Arguments:
@@ -528,116 +582,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!1 &840913487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 840913491}
-  - component: {fileID: 840913490}
-  - component: {fileID: 840913489}
-  - component: {fileID: 840913488}
-  - component: {fileID: 840913492}
-  m_Layer: 8
-  m_Name: MenuCanvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &840913488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 840913487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &840913489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 840913487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!223 &840913490
-Canvas:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 840913487}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &840913491
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 840913487}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1324835030}
-  - {fileID: 1382857488}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &840913492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 840913487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cde626b08db63498554054c6abd543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ViewerCanvas: {fileID: 1279270166}
-  MenuCanvas: {fileID: 840913490}
-  CameraScript: {fileID: 1562572281}
 --- !u!1 &982926389
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,7 +658,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 986536012}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.15823561
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -833,8 +777,9 @@ GameObject:
   - component: {fileID: 1279270166}
   - component: {fileID: 1279270165}
   - component: {fileID: 1279270164}
+  - component: {fileID: 1279270168}
   m_Layer: 5
-  m_Name: ViewerCanvas
+  m_Name: MainCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -888,7 +833,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -907,9 +852,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 456694121}
-  - {fileID: 676150905}
-  - {fileID: 2046715701}
+  - {fileID: 391340361}
+  - {fileID: 1802861683}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -918,6 +862,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1279270168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1279270163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cde626b08db63498554054c6abd543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ViewerCanvas: {fileID: 391340363}
+  MenuCanvas: {fileID: 1802861685}
+  CameraScript: {fileID: 1562572281}
 --- !u!1 &1285613380
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,8 +936,90 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1296674283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1296674284}
+  - component: {fileID: 1296674287}
+  - component: {fileID: 1296674286}
+  - component: {fileID: 1296674285}
+  m_Layer: 8
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1296674284
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1296674283}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 77819254}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -187.56964, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1296674285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1296674283}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1254083943, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1.5
+--- !u!114 &1296674286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1296674283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1296674287
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1296674283}
 --- !u!1 &1324835029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,17 +1043,18 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1324835029}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1884845002}
-  m_Father: {fileID: 840913491}
+  - {fileID: 563356049}
+  m_Father: {fileID: 1802861683}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
   m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1324835031
@@ -1107,13 +1148,13 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1382857487}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1652300723}
   - {fileID: 982926390}
-  m_Father: {fileID: 840913491}
+  m_Father: {fileID: 1802861683}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1381,6 +1422,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!1 &1802861682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1802861683}
+  - component: {fileID: 1802861685}
+  - component: {fileID: 1802861684}
+  m_Layer: 5
+  m_Name: MenuCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1802861683
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1802861682}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1324835030}
+  - {fileID: 1382857488}
+  m_Father: {fileID: 1279270167}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1802861684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1802861682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &1802861685
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1802861682}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1884845001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1547,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 840913492}
+        - m_Target: {fileID: 1279270168}
           m_MethodName: SwitchCanvas
           m_Mode: 1
           m_Arguments:
@@ -1503,16 +1617,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2046715700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1279270167}
+  m_Father: {fileID: 391340361}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -10, y: 10}
+  m_AnchoredPosition: {x: -10, y: 9.999939}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2046715702
@@ -1581,6 +1695,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 77819254}
   - {fileID: 491435468}
   m_Father: {fileID: 1652300723}
   m_RootOrder: 0
@@ -1607,8 +1722,8 @@ MonoBehaviour:
     m_Top: 15
     m_Bottom: 15
   m_ChildAlignment: 1
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 0
+  m_Spacing: 25
+  m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
