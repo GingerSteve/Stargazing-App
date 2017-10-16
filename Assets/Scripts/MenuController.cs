@@ -16,6 +16,8 @@ public class MenuController : MonoBehaviour
 
     List<TestItem> list = new List<TestItem>();
 
+    //TODO fix test code, add comments
+
     void Start()
     {
         MenuCanvas.enabled = false;
