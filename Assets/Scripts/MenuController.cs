@@ -33,6 +33,9 @@ public class MenuController : MonoBehaviour
 
     public void OpenMenu(GameObject constellation)
     {
+        Screen.orientation = (ScreenOrientation)CameraScript.GetOrientation();
+        Screen.orientation = ScreenOrientation.AutoRotation;
+
         var index = int.Parse(constellation.name);
         var item = list[index];
 
@@ -49,6 +52,8 @@ public class MenuController : MonoBehaviour
 
     public void CloseMenu()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
+
         MenuCanvas.enabled = false;
         CameraScript.enabled = true;
         ViewerCanvas.enabled = true;
