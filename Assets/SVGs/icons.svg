@@ -180,7 +180,7 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="-407.87675"
+     inkscape:cx="-736.17632"
      inkscape:cy="3648.6037"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -202,7 +202,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -337,24 +337,36 @@
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.57972133;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;filter:url(#filter5061)" />
     </g>
     <g
-       id="g2808"
-       transform="matrix(0.57089976,0,0,0.57089976,-70.89317,-320.07595)"
-       inkscape:export-filename="E:\Steve\Documents\My Documents\Code\Unity\Stargazing App\Assets\Images\back_arrow.png"
-       inkscape:export-xdpi="50.99464"
-       inkscape:export-ydpi="50.99464">
+       id="g4561">
       <path
          inkscape:connector-curvature="0"
          id="path2793"
-         d="M -109.45637,-707.14504 H -7.8939482"
-         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:10.58333302;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         d="m -133.38179,-723.78488 h 57.981967"
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6.04202223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"
          id="path2803"
-         d="m -67.068984,-666.20096 -22.130188,-20.47203 -22.130198,-20.47206 22.130198,-20.47204 22.130188,-20.47203"
+         d="m -109.18284,-700.40992 -12.63412,-11.68748 -12.63412,-11.68749 12.63412,-11.68748 12.63412,-11.68748"
          inkscape:transform-center-y="1.3805244e-005"
          inkscape:transform-center-x="7.3767301"
-         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:10.58333302;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:6.04202223;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+    </g>
+    <g
+       id="g4567"
+       inkscape:export-filename="E:\Steve\Documents\My Documents\Code\Unity\Stargazing App\Assets\Images\exit.png"
+       inkscape:export-xdpi="71.815147"
+       inkscape:export-ydpi="71.815147">
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6.04202223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -124.89053,-654.48204 40.999445,40.99944"
+         id="path4557"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4563"
+         d="m -124.89053,-613.4826 40.999443,-40.99944"
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6.04202223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
   </g>
 </svg>
