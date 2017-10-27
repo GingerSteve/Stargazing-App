@@ -34,12 +34,10 @@ public class CameraController : MonoBehaviour
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
             _mode = ControlMode.Mouse;
-            _currentOrientation = DeviceOrientation.Portrait;
         }
         else if (SystemInfo.deviceType == DeviceType.Handheld && SystemInfo.supportsGyroscope)
         {
             _mode = ControlMode.Gyro;
-            _currentOrientation = Input.deviceOrientation;
 
             _gyro = Input.gyro;
             _gyro.enabled = true;
@@ -47,7 +45,6 @@ public class CameraController : MonoBehaviour
         else
         {
             _mode = ControlMode.Touch;
-            _currentOrientation = Input.deviceOrientation;
         }
 
         // Get the button for switching modes
@@ -61,6 +58,8 @@ public class CameraController : MonoBehaviour
         _parent.transform.position = transform.position;
         transform.parent = _parent.transform;
         _origRotation = transform.localRotation;
+
+        _currentOrientation = DeviceOrientation.Portrait;
     }
 
     // Update is called once per frame
