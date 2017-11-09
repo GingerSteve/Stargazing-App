@@ -3,10 +3,11 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class DAL
 {
-    private SQLiteConnection _connection;
+    SQLiteConnection _connection;
 
     public DAL(string databasePath)
     {
@@ -41,5 +42,29 @@ public class DAL
         }
 
         _connection = new SQLiteConnection(path, SQLiteOpenFlags.ReadWrite);
+    }
+
+    /// <summary>
+    /// Gets all Stars in the database
+    /// </summary>
+    public List<Star> GetStars()
+    {
+        return _connection.Query<Star>("SELECT * FROM Star");
+    }
+
+    /// <summary>
+    /// Gets a list of all constellations
+    /// </summary>
+    public List<Constellation> GetConstellations()
+    {
+        return _connection.Query<Constellation>("SELECT * FROM Constellation");
+    }
+
+    /// <summary>
+    /// Gets the a list of Segments for a constellation
+    /// </summary>
+    public List<Segment> GetSegments(Dictionary<int, Star> stars, int constellationId)
+    {
+        return _connection.Query<Segment>("SELECT * FROM ConstellationSegment WHERE ConstellationId == " + constellationId);
     }
 }
