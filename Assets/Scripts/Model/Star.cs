@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class Star
 {
@@ -10,4 +10,9 @@ public class Star
     public int DeclinationDegrees { get; set; }
     public int DeclinationArcMinutes { get; set; }
     public float DeclinationArcSeconds { get; set; }
+
+    public static List<Star> GetStars()
+    {
+        return DAL.GetStars();
+    }
 }

@@ -3,27 +3,27 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 using System;
-using System.Linq;
 
 public class DAL
 {
-    SQLiteConnection _connection;
+    static string _databasePath = "stargazing.db";
+    static SQLiteConnection _connection;
 
-    public DAL(string databasePath)
+    static DAL()
     {
         string path;
 
         if (Application.platform == RuntimePlatform.WindowsEditor)
-            path = string.Format(@"Assets/StreamingAssets/{0}", databasePath);
+            path = string.Format(@"Assets/StreamingAssets/{0}", _databasePath);
         else
-            path = string.Format("{0}/{1}", Application.persistentDataPath, databasePath);
+            path = string.Format("{0}/{1}", Application.persistentDataPath, _databasePath);
 
         if (!File.Exists(path))
         {
             switch (Application.platform)
             {
                 case RuntimePlatform.Android:
-                    var loadDb = new WWW("jar:file://" + Application.dataPath + "!/assets/" + databasePath);
+                    var loadDb = new WWW("jar:file://" + Application.dataPath + "!/assets/" + _databasePath);
 
                     var start = DateTime.Now;
                     while (!loadDb.isDone && (DateTime.Now - start).Seconds < 30) { }
@@ -31,11 +31,11 @@ public class DAL
                     File.WriteAllBytes(path, loadDb.bytes);
                     break;
                 case RuntimePlatform.IPhonePlayer:
-                    var load2 = Application.dataPath + "/Raw/" + databasePath;
+                    var load2 = Application.dataPath + "/Raw/" + _databasePath;
                     File.Copy(load2, path);
                     break;
                 default:
-                    var load3 = Application.dataPath + "/StreamingAssets/" + databasePath;
+                    var load3 = Application.dataPath + "/StreamingAssets/" + _databasePath;
                     File.Copy(load3, path);
                     break;
             }
@@ -47,7 +47,7 @@ public class DAL
     /// <summary>
     /// Gets all Stars in the database
     /// </summary>
-    public List<Star> GetStars()
+    public static List<Star> GetStars()
     {
         return _connection.Query<Star>("SELECT * FROM Star");
     }
@@ -55,7 +55,7 @@ public class DAL
     /// <summary>
     /// Gets a list of all constellations
     /// </summary>
-    public List<Constellation> GetConstellations()
+    public static List<Constellation> GetConstellations()
     {
         return _connection.Query<Constellation>("SELECT * FROM Constellation");
     }
@@ -63,7 +63,7 @@ public class DAL
     /// <summary>
     /// Gets the a list of Segments for a constellation
     /// </summary>
-    public List<Segment> GetSegments(Dictionary<int, Star> stars, int constellationId)
+    public static List<Segment> GetSegments(int constellationId)
     {
         return _connection.Query<Segment>("SELECT * FROM ConstellationSegment WHERE ConstellationId == " + constellationId);
     }

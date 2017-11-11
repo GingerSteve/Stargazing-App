@@ -1,28 +1,36 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstellationViewer
+public class ViewerController : MonoBehaviour
 {
-    AccessStars _starAccess;
-    AccessConstellations _constAccess;
+    private static ViewerController Instance { get; set; }
 
     Dictionary<int, GameObject> _starObjects;
     GameObject _parent;
     Material _mat;
 
-    public ConstellationViewer()
+    object _lock = new object();
+    void Awake()
     {
-        _starAccess = new AccessStars();
-        _constAccess = new AccessConstellations();
+        lock (_lock)
+        {
+            if (Instance == null)
+                Instance = this;
+            else if (Instance != this)
+                Destroy(gameObject);
+        }
+    }
 
-        _parent = new GameObject("Stars");
+    void Start()
+    {
+        _parent = new GameObject("StarParent");
         _mat = new Material(Shader.Find("Unlit/Color"));
         _mat.color = Color.white;
 
-        var stars = _starAccess.GetStars();
+        var stars = Star.GetStars();
         _starObjects = CreateStarObjects(stars);
 
-        var constellations = _constAccess.GetConstellations();
+        var constellations = Constellation.GetConstellations();
         DrawConstellations(constellations);
     }
 
@@ -34,6 +42,9 @@ public class ConstellationViewer
         {
             var obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             obj.name = "Star-" + star.Id.ToString();
+
+            var s = obj.AddComponent<StarView>();
+            s.Star = star;
 
             obj.transform.parent = _parent.transform;
             obj.transform.localPosition = StarUtils.GetStartPosition(star);
@@ -61,8 +72,7 @@ public class ConstellationViewer
             line.name = "Line-" + con.Id + "-" + count;
             line.transform.parent = _parent.transform;
 
-            line.AddComponent<LineRenderer>();
-            LineRenderer lr = line.GetComponent<LineRenderer>();
+            LineRenderer lr = line.AddComponent<LineRenderer>();
 
             lr.material = _mat;
 
