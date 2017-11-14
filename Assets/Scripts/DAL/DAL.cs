@@ -55,9 +55,13 @@ public class DAL
     /// <summary>
     /// Gets a list of all constellations
     /// </summary>
-    public static List<Constellation> GetConstellations()
+    public static List<Constellation> GetConstellations(int cultureId)
     {
-        return _connection.Query<Constellation>("SELECT * FROM Constellation");
+        var query = "SELECT c.Id " +
+            "FROM Constellation c " +
+            "JOIN ConstellationInfo ci ON c.Id == ci.ConstellationId " +
+            "WHERE ci.CultureId == " + cultureId;
+        return _connection.Query<Constellation>(query);
     }
 
     /// <summary>
@@ -66,5 +70,10 @@ public class DAL
     public static List<Segment> GetSegments(int constellationId)
     {
         return _connection.Query<Segment>("SELECT * FROM ConstellationSegment WHERE ConstellationId == " + constellationId);
+    }
+
+    public static List<Culture> GetCultures()
+    {
+        return _connection.Query<Culture>("SELECT * FROM Culture");
     }
 }

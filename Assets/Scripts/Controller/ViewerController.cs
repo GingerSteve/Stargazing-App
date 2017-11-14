@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
+/// <summary>
+/// A Singleton responsible for displaying stars and constellations
+/// </summary>
 public class ViewerController : MonoBehaviour
 {
-    private static ViewerController Instance { get; set; }
+    static ViewerController Instance { get; set; }
 
-    Dictionary<int, GameObject> _starObjects;
-    GameObject _parent;
+    Dictionary<int, StarView> _starObjects;
+    GameObject _starParent;
+    GameObject _constParent;
     Material _mat;
 
     object _lock = new object();
@@ -23,67 +29,48 @@ public class ViewerController : MonoBehaviour
 
     void Start()
     {
-        _parent = new GameObject("StarParent");
+        _starParent = new GameObject("Stars");
+        _constParent = new GameObject("Constellations");
+
         _mat = new Material(Shader.Find("Unlit/Color"));
         _mat.color = Color.white;
 
         var stars = Star.GetStars();
-        _starObjects = CreateStarObjects(stars);
 
-        var constellations = Constellation.GetConstellations();
-        DrawConstellations(constellations);
-    }
-
-    Dictionary<int, GameObject> CreateStarObjects(List<Star> stars)
-    {
-        Dictionary<int, GameObject> dict = new Dictionary<int, GameObject>();
-
+        _starObjects = new Dictionary<int, StarView>();
         foreach (var star in stars)
-        {
-            var obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            obj.name = "Star-" + star.Id.ToString();
+            _starObjects.Add(star.Id, StarView.Create(star, _starParent, _mat));
 
-            var s = obj.AddComponent<StarView>();
-            s.Star = star;
-
-            obj.transform.parent = _parent.transform;
-            obj.transform.localPosition = StarUtils.GetStartPosition(star);
-
-            obj.GetComponent<Renderer>().material = _mat;
-
-            dict.Add(star.Id, obj);
-        }
-
-        return dict;
+        CycleCulturesAsync();
     }
 
-    void DrawConstellations(List<Constellation> cons)
+    /// <summary>
+    /// Cycles through the cultures available and displays the constellations for each.
+    /// In the future, his could be replaced with a menu allowing the user to choose a culture to view.
+    /// </summary>
+    async void CycleCulturesAsync()
     {
-        foreach (var con in cons)
-            DrawLines(con);
-    }
+        var cultures = Culture.GetCultures();
+        var views = new List<ConstellationView>();
 
-    void DrawLines(Constellation con)
-    {
-        var count = 0;
-        foreach (var pair in con.Segments)
+        var i = 0;
+        while (Application.isPlaying)
         {
-            GameObject line = new GameObject();
-            line.name = "Line-" + con.Id + "-" + count;
-            line.transform.parent = _parent.transform;
+            // Destroy all currently visible constellations
+            foreach (var v in views)
+                Destroy(v.gameObject);
+            views.Clear();
 
-            LineRenderer lr = line.AddComponent<LineRenderer>();
+            // Display the constellations for the next culture
+            var c = cultures[i];
+            Debug.Log("Showing constellations for " + c.Name);
 
-            lr.material = _mat;
+            var constellations = Constellation.GetConstellations(c.Id);
+            foreach (var con in constellations)
+                views.Add(ConstellationView.Create(con, _starObjects, _constParent, _mat));
 
-            lr.startColor = Color.white;
-            lr.endColor = Color.white;
-            lr.startWidth = 0.5f;
-            lr.endWidth = 0.5f;
-            lr.SetPosition(0, _starObjects[pair.StarA].transform.position);
-            lr.SetPosition(1, _starObjects[pair.StarB].transform.position);
-
-            count++;
+            await Task.Delay(TimeSpan.FromSeconds(10));
+            i = (i + 1) % cultures.Count;
         }
     }
 
