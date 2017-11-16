@@ -57,7 +57,7 @@ public class DAL
     /// </summary>
     public static List<Constellation> GetConstellations(int cultureId)
     {
-        var query = "SELECT c.Id " +
+        var query = "SELECT c.Id, ci.Name, ci.Description, ci.ImageSource " +
             "FROM Constellation c " +
             "JOIN ConstellationInfo ci ON c.Id == ci.ConstellationId " +
             "WHERE ci.CultureId == " + cultureId;
@@ -65,15 +65,29 @@ public class DAL
     }
 
     /// <summary>
-    /// Gets the a list of Segments for a constellation
+    /// Gets the list of Segments for a constellation
     /// </summary>
     public static List<Segment> GetSegments(int constellationId)
     {
         return _connection.Query<Segment>("SELECT * FROM ConstellationSegment WHERE ConstellationId == " + constellationId);
     }
 
+    /// <summary>
+    /// Gets a list of all cultures in the database
+    /// </summary>
     public static List<Culture> GetCultures()
     {
         return _connection.Query<Culture>("SELECT * FROM Culture");
+    }
+
+    /// <summary>
+    /// Get the stars that make up the border of a constellation
+    /// </summary>
+    public static List<ConstellationBorder> GetBorder(int constellationId)
+    {
+        var query = "SELECT * FROM ConstellationBorderStar " +
+            "WHERE ConstellationId == " + constellationId + " " +
+            "ORDER BY SortOrder asc";
+        return _connection.Query<ConstellationBorder>(query);
     }
 }

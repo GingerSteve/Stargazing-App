@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Represents a Star GameObject
+/// Connects a Star to the corresponding GameObject.
+/// Should be attached to the GameObject as a component.
 /// </summary>
 public class StarView : MonoBehaviour
 {
     public Star Star { get; set; }
     public Vector3 Position { get { return gameObject.transform.position; } }
 
-    public static StarView Create(Star star, GameObject parent, Material mat)
+    /// <summary>
+    /// Creates and positions a GameObject for the Star
+    /// </summary>
+    public static StarView Create(Star star)
     {
-        var obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        var parent = ViewerController.Instance.StarParent;
+        var prefab = Resources.Load<GameObject>("StarPrefab");
+
+        var obj = Instantiate(prefab, StarUtils.GetStartPosition(star), Quaternion.identity, parent.transform);
         obj.name = "Star-" + star.Id.ToString();
-
-        obj.transform.parent = parent.transform;
-        obj.transform.localPosition = StarUtils.GetStartPosition(star);
-
-        obj.GetComponent<Renderer>().material = mat;
 
         var starView = obj.AddComponent<StarView>();
         starView.Star = star;

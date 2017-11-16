@@ -1211,6 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2860ea636224ce24d84d92ea82b9cd6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Menu: {fileID: 1279270168}
 --- !u!4 &1389981135
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
@@ -19,19 +17,14 @@ public class MenuController : MonoBehaviour
         MenuCanvas.enabled = false;
     }
 
-    void Update()
-    {
-
-    }
-
-    public void OpenMenu(GameObject constellation)
+    public void OpenMenu(Constellation constellation)
     {
         Screen.orientation = (ScreenOrientation)CameraScript.GetOrientation();
         Screen.orientation = ScreenOrientation.AutoRotation;
 
-        //NameText.text = item.Name;
-        //DescText.text = item.Desc;
-        //ConstImage.sprite = Resources.Load<Sprite>(item.Image);
+        NameText.text = constellation.Name;
+        DescText.text = constellation.Description;
+        ConstImage.sprite = Resources.Load<Sprite>("Constellations/" + constellation.ImageSource);
 
         ScrollView.verticalNormalizedPosition = 1;
 

@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\DAL\SQLite.cs" />
     <Compile Include="Assets\Scripts\Model\Constellation.cs" />
     <Compile Include="Assets\Scripts\Model\Culture.cs" />
+    <Compile Include="Assets\Scripts\Model\ConstellationBorder.cs" />
     <Compile Include="Assets\Scripts\Model\Segment.cs" />
     <Compile Include="Assets\Scripts\Model\Star.cs" />
     <Compile Include="Assets\Scripts\Utility\StarUtils.cs" />
