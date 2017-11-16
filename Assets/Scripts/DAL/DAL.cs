@@ -85,7 +85,7 @@ public class DAL
     /// </summary>
     public static List<ConstellationBorder> GetBorder(int constellationId)
     {
-        var query = "SELECT * FROM ConstellationBorderStar " +
+        var query = "SELECT * FROM ConstellationBorder " +
             "WHERE ConstellationId == " + constellationId + " " +
             "ORDER BY SortOrder asc";
         return _connection.Query<ConstellationBorder>(query);
