@@ -22,7 +22,7 @@ public class DAL
 
             // If it's a debug build, re-copy the database when opening so changes are reflected
             if (File.Exists(path) && Debug.isDebugBuild)
-                Debug.Log("HELLO");
+                File.Delete(path);
         }
 
         if (!File.Exists(path))
