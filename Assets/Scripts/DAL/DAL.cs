@@ -17,11 +17,13 @@ public class DAL
         if (Application.platform == RuntimePlatform.WindowsEditor)
             path = string.Format(@"Assets/StreamingAssets/{0}", _databaseName);
         else
+        {
             path = string.Format("{0}/{1}", Application.persistentDataPath, _databaseName);
 
-        // If it's a debug build, re-copy the database when opening so changes are reflected
-        if (File.Exists(path) && Debug.isDebugBuild)
-            File.Delete(path);
+            // If it's a debug build, re-copy the database when opening so changes are reflected
+            if (File.Exists(path) && Debug.isDebugBuild)
+                Debug.Log("HELLO");
+        }
 
         if (!File.Exists(path))
         {

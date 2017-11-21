@@ -23,13 +23,15 @@ public class CameraController : MonoBehaviour
     float _rotationY;
     float _velocityX, _velocityY;
 
+    float _touchSensitivity;
     const float _mouseSensitivity = 70f;
-    const float _touchSensitivity = 2.0f;
     const float _deceleration = 1.1f;
 
     // Initialize controller
     void Start()
     {
+        _touchSensitivity = 640f / Screen.dpi + 1;
+
         // Set the starting control mode and orientation
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
