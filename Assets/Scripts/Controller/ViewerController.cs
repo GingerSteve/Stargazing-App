@@ -73,4 +73,8 @@ public class ViewerController : MonoBehaviour
         }
     }
 
+    void OnApplicationQuit()
+    {
+        DAL.Close();
+    }
 }

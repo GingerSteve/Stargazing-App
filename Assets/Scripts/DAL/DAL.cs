@@ -6,42 +6,53 @@ using System;
 
 public class DAL
 {
-    static string _databasePath = "stargazing.db";
+    static string _databaseName = "stargazing.db";
     static SQLiteConnection _connection;
 
     static DAL()
     {
         string path;
+        string newPath;
 
         if (Application.platform == RuntimePlatform.WindowsEditor)
-            path = string.Format(@"Assets/StreamingAssets/{0}", _databasePath);
+            path = string.Format(@"Assets/StreamingAssets/{0}", _databaseName);
         else
-            path = string.Format("{0}/{1}", Application.persistentDataPath, _databasePath);
+            path = string.Format("{0}/{1}", Application.persistentDataPath, _databaseName);
+
+        // If it's a debug build, re-copy the database when opening so changes are reflected
+        if (File.Exists(path) && Debug.isDebugBuild)
+            File.Delete(path);
 
         if (!File.Exists(path))
         {
             switch (Application.platform)
             {
                 case RuntimePlatform.Android:
-                    var loadDb = new WWW("jar:file://" + Application.dataPath + "!/assets/" + _databasePath);
+                    // On Android, the database file is stored in the JAR, so we need to copy the file to persistent storage
+                    var loadDb = new WWW("jar:file://" + Application.dataPath + "!/assets/" + _databaseName);
 
                     var start = DateTime.Now;
-                    while (!loadDb.isDone && (DateTime.Now - start).Seconds < 30) { }
+                    while (!loadDb.isDone && (DateTime.Now - start).Seconds < 30) { } // Wait for the file to open
 
                     File.WriteAllBytes(path, loadDb.bytes);
                     break;
                 case RuntimePlatform.IPhonePlayer:
-                    var load2 = Application.dataPath + "/Raw/" + _databasePath;
-                    File.Copy(load2, path);
+                    newPath = Application.dataPath + "/Raw/" + _databaseName;
+                    File.Copy(newPath, path);
                     break;
                 default:
-                    var load3 = Application.dataPath + "/StreamingAssets/" + _databasePath;
-                    File.Copy(load3, path);
+                    newPath = Application.dataPath + "/StreamingAssets/" + _databaseName;
+                    File.Copy(newPath, path);
                     break;
             }
         }
 
-        _connection = new SQLiteConnection(path, SQLiteOpenFlags.ReadWrite);
+        _connection = new SQLiteConnection(path, SQLiteOpenFlags.ReadOnly);
+    }
+
+    public static void Close()
+    {
+        _connection.Close();
     }
 
     /// <summary>
