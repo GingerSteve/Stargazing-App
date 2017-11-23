@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    enum ControlMode
+    public enum ControlMode
     {
         Gyro,
         Touch,
@@ -12,7 +12,6 @@ public class CameraController : MonoBehaviour
 
     public Sprite CompassSprite, ArrowsSprite;
     public Image ModeButton;
-    public Text DebugText;
 
     ControlMode _mode;
     Quaternion _origRotation;
@@ -278,5 +277,10 @@ public class CameraController : MonoBehaviour
     public DeviceOrientation GetOrientation()
     {
         return _currentOrientation;
+    }
+
+    public ControlMode GetControlMode()
+    {
+        return _mode;
     }
 }

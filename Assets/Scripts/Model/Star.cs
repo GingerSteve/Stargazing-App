@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class Star
 {
@@ -14,5 +15,10 @@ public class Star
     public static List<Star> GetStars()
     {
         return DAL.GetStars();
+    }
+
+    public static List<Star> GetStarsForConstellation(int id)
+    {
+        return DAL.GetStarsForConstellation(id);
     }
 }

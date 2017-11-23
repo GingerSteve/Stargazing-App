@@ -66,6 +66,17 @@ public class DAL
     }
 
     /// <summary>
+    /// Gets a list of Stars for a particular constellation, with only the IDs populated
+    /// </summary>
+    public static List<Star> GetStarsForConstellation(int id)
+    {
+        var query = "SELECT DISTINCT s.id FROM Star s " +
+            "JOIN ConstellationSegment ci ON ci.StarA = s.id OR ci.StarB = s.id " +
+            "WHERE ci.ConstellationId = " + id;
+        return _connection.Query<Star>(query);
+    }
+
+    /// <summary>
     /// Gets a list of all constellations
     /// </summary>
     public static List<Constellation> GetConstellations(int cultureId)

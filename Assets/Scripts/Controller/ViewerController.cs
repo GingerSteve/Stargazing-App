@@ -68,7 +68,7 @@ public class ViewerController : MonoBehaviour
             foreach (var con in constellations)
                 views.Add(ConstellationView.Create(con));
 
-            await Task.Delay(TimeSpan.FromSeconds(10));
+            await Task.Delay(TimeSpan.FromSeconds(100));
             i = (i + 1) % cultures.Count;
         }
     }
