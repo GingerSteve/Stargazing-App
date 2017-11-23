@@ -88,16 +88,17 @@ public class ConstellationView : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the centre position of a constellation (average position of all Stars in the constellation)
+    /// Returns the centre position of a constellation (average position of the border Stars in the constellation)
     /// </summary>
     static Vector3 GetPosition(Constellation con)
     {
         var vec = new Vector3(0, 0, 0);
+        var views = ViewerController.Instance.StarViews;
 
-        foreach (var s in con.StarViews)
-            vec += s.Position;
+        foreach (var s in con.Border)
+            vec += views[s.StarId].Position;
 
-        vec /= con.StarViews.Count;
+        vec /= con.Border.Count;
 
         return vec;
     }

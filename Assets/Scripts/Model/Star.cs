@@ -16,9 +16,4 @@ public class Star
     {
         return DAL.GetStars();
     }
-
-    public static List<Star> GetStarsForConstellation(int id)
-    {
-        return DAL.GetStarsForConstellation(id);
-    }
 }
