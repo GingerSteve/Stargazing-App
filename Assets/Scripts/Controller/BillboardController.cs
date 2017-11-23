@@ -5,25 +5,32 @@
 /// </summary>
 public class BillboardController : MonoBehaviour
 {
+    Camera _camera;
+
+    void Start()
+    {
+        _camera = Camera.main;
+    }
+
     void Update()
     {
-        var cameraController = Camera.main.GetComponent<CameraController>();
+        var cameraController = _camera.GetComponent<CameraController>();
 
         if (cameraController.GetControlMode() != CameraController.ControlMode.Gyro)
         {
             switch (cameraController.GetOrientation())
             {
                 case DeviceOrientation.Portrait:
-                    transform.rotation = Camera.main.transform.rotation;
+                    transform.rotation = _camera.transform.rotation;
                     break;
                 case DeviceOrientation.LandscapeLeft:
-                    transform.rotation = Camera.main.transform.rotation * Quaternion.Euler(0, 0, -90);
+                    transform.rotation = _camera.transform.rotation * Quaternion.Euler(0, 0, -90);
                     break;
                 case DeviceOrientation.LandscapeRight:
-                    transform.rotation = Camera.main.transform.rotation * Quaternion.Euler(0, 0, 90);
+                    transform.rotation = _camera.transform.rotation * Quaternion.Euler(0, 0, 90);
                     break;
                 case DeviceOrientation.PortraitUpsideDown:
-                    transform.rotation = Camera.main.transform.rotation * Quaternion.Euler(0, 0, 180);
+                    transform.rotation = _camera.transform.rotation * Quaternion.Euler(0, 0, 180);
                     break;
             }
         }
