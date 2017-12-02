@@ -5,8 +5,8 @@
 /// </summary>
 public class ConstellationBorder
 {
-    public int StarId { get; set; }
-    public int Order { get; set; }
+    public int StarId { get; private set; }
+    public int Order { get; private set; }
 
     public static List<ConstellationBorder> GetBorder(int constId)
     {
