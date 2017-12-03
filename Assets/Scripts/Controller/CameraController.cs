@@ -165,61 +165,56 @@ public class CameraController : MonoBehaviour
     /// <summary> Handles orientation changes </summary>
     public void SetOrientation()
     {
-        // Ignore changes to FaceUp and FaceDown
-        switch (Input.deviceOrientation)
+        var from = CurrentOrientation;
+        var to = CurrentOrientation;
+
+        // Ignore FaceUp and FaceDown rotations
+        if (Input.deviceOrientation == DeviceOrientation.Portrait ||
+            Input.deviceOrientation == DeviceOrientation.LandscapeLeft ||
+            Input.deviceOrientation == DeviceOrientation.LandscapeRight ||
+            Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown)
         {
-            case DeviceOrientation.Portrait:
-            case DeviceOrientation.LandscapeLeft:
-            case DeviceOrientation.LandscapeRight:
-            case DeviceOrientation.PortraitUpsideDown:
-                SetCameraRotation(Input.deviceOrientation);
-                CurrentOrientation = Input.deviceOrientation;
-                break;
+            CurrentOrientation = Input.deviceOrientation;
+            to = CurrentOrientation;
         }
 
+        SetCameraParentRotation(from, to);
     }
 
     /// <summary>
     /// Sets the rotation of the camera's parent object.
     /// This is used to turn the camera when the orientation changes.
     /// </summary>
-    void SetCameraRotation(DeviceOrientation orientation)
+    void SetCameraParentRotation(DeviceOrientation from, DeviceOrientation to)
     {
         if (Mode == ControlMode.Touch)
         {
             // Rotate the parent to counter the rotation of the device
-            switch (orientation)
-            {
-                case DeviceOrientation.Portrait:
-                    _parent.transform.rotation = Quaternion.Euler(0, 0, 0);
-                    break;
-                case DeviceOrientation.LandscapeLeft:
-                    _parent.transform.rotation = Quaternion.Euler(0, 0, 90);
-                    break;
-                case DeviceOrientation.LandscapeRight:
-                    _parent.transform.rotation = Quaternion.Euler(0, 0, -90);
-                    break;
-                case DeviceOrientation.PortraitUpsideDown:
-                    _parent.transform.rotation = Quaternion.Euler(0, 0, 180);
-                    break;
-            }
+            if (to == DeviceOrientation.Portrait)
+                _parent.transform.rotation = Quaternion.Euler(0, 0, 0);
+            else if (to == DeviceOrientation.LandscapeLeft)
+                _parent.transform.rotation = Quaternion.Euler(0, 0, 90);
+            else if (to == DeviceOrientation.LandscapeRight)
+                _parent.transform.rotation = Quaternion.Euler(0, 0, -90);
+            else if (to == DeviceOrientation.PortraitUpsideDown)
+                _parent.transform.rotation = Quaternion.Euler(0, 0, 180);
 
             // Some orientation changes need the Y axis to be mirrored
-            if ((CurrentOrientation == DeviceOrientation.Portrait || CurrentOrientation == DeviceOrientation.LandscapeLeft) &&
-                (orientation == DeviceOrientation.LandscapeRight || orientation == DeviceOrientation.PortraitUpsideDown))
+            if ((from == DeviceOrientation.Portrait || from == DeviceOrientation.LandscapeLeft) &&
+                (to == DeviceOrientation.LandscapeRight || to == DeviceOrientation.PortraitUpsideDown))
             {
                 _rotationY = -_rotationY;
             }
-            else if ((CurrentOrientation == DeviceOrientation.PortraitUpsideDown || CurrentOrientation == DeviceOrientation.LandscapeRight) &&
-                (orientation == DeviceOrientation.Portrait || orientation == DeviceOrientation.LandscapeLeft))
+            else if ((from == DeviceOrientation.PortraitUpsideDown || from == DeviceOrientation.LandscapeRight) &&
+                (to == DeviceOrientation.Portrait || to == DeviceOrientation.LandscapeLeft))
             {
                 _rotationY = -_rotationY;
             }
 
+            RotateCamera();
         }
-        else
+        else // Gyro mode
             _parent.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        RotateCamera();
     }
 }
