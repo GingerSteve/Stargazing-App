@@ -91,6 +91,8 @@ public class CameraController : MonoBehaviour
 
                 _rotationX = transform.rotation.eulerAngles.y;
                 _rotationY = -transform.rotation.eulerAngles.x;
+                if (_rotationY < -90)
+                    _rotationY += 360;
             }
         }
     }
