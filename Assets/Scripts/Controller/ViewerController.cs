@@ -64,8 +64,6 @@ public class ViewerController : MonoBehaviour
 
         // Display the constellations for the next culture
         var c = cultures[_currentCulture];
-        Debug.Log("Showing constellations for " + c.Name);
-
         var constellations = Constellation.GetConstellations(c.Id);
         foreach (var con in constellations)
             _constellationViews.Add(ConstellationView.Create(con));

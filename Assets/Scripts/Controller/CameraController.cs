@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Controls the camera rotation and input
@@ -171,8 +172,8 @@ public class CameraController : MonoBehaviour
             case DeviceOrientation.LandscapeLeft:
             case DeviceOrientation.LandscapeRight:
             case DeviceOrientation.PortraitUpsideDown:
+                SetCameraRotation(Input.deviceOrientation);
                 CurrentOrientation = Input.deviceOrientation;
-                SetCameraRotation();
                 break;
         }
 
@@ -182,11 +183,12 @@ public class CameraController : MonoBehaviour
     /// Sets the rotation of the camera's parent object.
     /// This is used to turn the camera when the orientation changes.
     /// </summary>
-    void SetCameraRotation()
+    void SetCameraRotation(DeviceOrientation orientation)
     {
         if (Mode == ControlMode.Touch)
         {
-            switch (CurrentOrientation)
+            // Rotate the parent to counter the rotation of the device
+            switch (orientation)
             {
                 case DeviceOrientation.Portrait:
                     _parent.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -201,8 +203,23 @@ public class CameraController : MonoBehaviour
                     _parent.transform.rotation = Quaternion.Euler(0, 0, 180);
                     break;
             }
+
+            // Some orientation changes need the Y axis to be mirrored
+            if ((CurrentOrientation == DeviceOrientation.Portrait || CurrentOrientation == DeviceOrientation.LandscapeLeft) &&
+                (orientation == DeviceOrientation.LandscapeRight || orientation == DeviceOrientation.PortraitUpsideDown))
+            {
+                _rotationY = -_rotationY;
+            }
+            else if ((CurrentOrientation == DeviceOrientation.PortraitUpsideDown || CurrentOrientation == DeviceOrientation.LandscapeRight) &&
+                (orientation == DeviceOrientation.Portrait || orientation == DeviceOrientation.LandscapeLeft))
+            {
+                _rotationY = -_rotationY;
+            }
+
         }
         else
             _parent.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        RotateCamera();
     }
 }
