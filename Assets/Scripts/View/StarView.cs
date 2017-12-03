@@ -10,7 +10,7 @@ public class StarView : MonoBehaviour
     public Vector3 Position { get { return gameObject.transform.position; } }
 
     /// <summary>
-    /// Creates and positions a GameObject for the Star
+    /// Creates and positions a GameObject for a Star
     /// </summary>
     public static StarView Create(Star star)
     {

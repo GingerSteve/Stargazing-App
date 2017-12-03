@@ -12,8 +12,7 @@ public class CameraController : MonoBehaviour
     Quaternion _origRotation;
     Gyroscope _gyro;
     GameObject _parent;
-    float _rotationX;
-    float _rotationY;
+    float _rotationX, _rotationY;
     float _velocityX, _velocityY;
 
     float _touchSensitivity;
@@ -23,7 +22,7 @@ public class CameraController : MonoBehaviour
     // Initialize controller
     void Start()
     {
-        _touchSensitivity = 640f / Screen.dpi + 1;
+        _touchSensitivity = 640f / Screen.dpi + 1; // This feels right on the two mobile devices I have, but should be tested on more devices
 
         // Set the starting control mode and orientation
         if (SystemInfo.deviceType == DeviceType.Desktop)
@@ -51,7 +50,6 @@ public class CameraController : MonoBehaviour
         CurrentOrientation = DeviceOrientation.Portrait;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.deviceOrientation != CurrentOrientation)
@@ -89,6 +87,7 @@ public class CameraController : MonoBehaviour
                 Quaternion rotate = new Quaternion(_gyro.attitude.x, _gyro.attitude.y, -_gyro.attitude.z, -_gyro.attitude.w);
                 transform.localRotation = Quaternion.Euler(90, 0, 0) * rotate;
 
+                // Update the rotation to store the position when switching from gyro to touch mode
                 _rotationX = transform.rotation.eulerAngles.y;
                 _rotationY = -transform.rotation.eulerAngles.x;
                 if (_rotationY < -90)

@@ -9,6 +9,9 @@ public class DAL
     static string _databaseName = "stargazing.db";
     static SQLiteConnection _connection;
 
+    /// <summary>
+    /// Sets up the DAL
+    /// </summary>
     static DAL()
     {
         string path;
@@ -20,7 +23,7 @@ public class DAL
         {
             path = string.Format("{0}/{1}", Application.persistentDataPath, _databaseName);
 
-            // If it's a debug build, re-copy the database when opening so changes are reflected
+            // If it's a debug build, delete and re-copy the database when opening the app, so changes are reflected
             if (File.Exists(path) && Debug.isDebugBuild)
                 File.Delete(path);
         }
@@ -30,7 +33,7 @@ public class DAL
             switch (Application.platform)
             {
                 case RuntimePlatform.Android:
-                    // On Android, the database file is stored in the JAR, so we need to copy the file to persistent storage
+                    // On Android, the database file is stored in the JAR
                     var loadDb = new WWW("jar:file://" + Application.dataPath + "!/assets/" + _databaseName);
 
                     var start = DateTime.Now;
@@ -66,7 +69,7 @@ public class DAL
     }
 
     /// <summary>
-    /// Gets a list of all constellations
+    /// Gets a list of constellations for a culture
     /// </summary>
     public static List<Constellation> GetConstellations(int cultureId)
     {

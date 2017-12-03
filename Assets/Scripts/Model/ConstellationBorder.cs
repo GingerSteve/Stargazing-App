@@ -2,6 +2,7 @@
 
 /// <summary>
 /// A star that makes up the border for a Constellation. This is used to generate the clickable mesh.
+/// Order MUST BE clockwise, or the mesh won't be clickable.
 /// </summary>
 public class ConstellationBorder
 {

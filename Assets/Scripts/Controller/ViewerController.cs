@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -34,17 +32,20 @@ public class ViewerController : MonoBehaviour
 
     void Start()
     {
-        Screen.sleepTimeout = (int)SleepTimeout.NeverSleep;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep; // Set the screen to stay on while the app is active
 
+        // Create parent objects for stars and constellations
         StarParent = new GameObject("Stars");
         ConstellationParent = new GameObject("Constellations");
 
+        // Get all the stars in the database and display StarViews
         var stars = Star.GetStars();
 
         StarViews = new Dictionary<int, StarView>();
         foreach (var star in stars)
             StarViews.Add(star.Id, StarView.Create(star));
 
+        // Display the constellations for the first culture
         DisplayNextCulture();
     }
 

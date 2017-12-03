@@ -35,6 +35,7 @@ public class UIButtonController : MonoBehaviour
         var newPos = DefaultPosition;
         var rect = gameObject.GetComponent<RectTransform>();
 
+        // Get the new position for the element
         switch (orientation)
         {
             case DeviceOrientation.Portrait:
@@ -45,16 +46,17 @@ public class UIButtonController : MonoBehaviour
                 newPos = (ScreenPosition)(((int)DefaultPosition + 1) % 4);
                 transform.rotation = Quaternion.Euler(0, 0, -90);
                 break;
-            case DeviceOrientation.LandscapeRight:
-                newPos = (ScreenPosition)(((int)DefaultPosition + 3) % 4);
-                transform.rotation = Quaternion.Euler(0, 0, 90);
-                break;
             case DeviceOrientation.PortraitUpsideDown:
                 newPos = (ScreenPosition)(((int)DefaultPosition + 2) % 4);
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
+            case DeviceOrientation.LandscapeRight:
+                newPos = (ScreenPosition)(((int)DefaultPosition + 3) % 4);
+                transform.rotation = Quaternion.Euler(0, 0, 90);
+                break;
         }
 
+        // Set the element's anchors and offset
         switch (newPos)
         {
             case ScreenPosition.BottomLeft:

@@ -20,6 +20,9 @@ public class MenuController : MonoBehaviour
         MenuCanvas.enabled = false;
     }
 
+    /// <summary>
+    /// Populate the menu with information for a constellation and display the menu.
+    /// </summary>
     public void OpenMenu(Constellation constellation)
     {
         Screen.orientation = (ScreenOrientation)CameraScript.CurrentOrientation;
