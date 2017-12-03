@@ -12,7 +12,7 @@ public class StarUtils
     const float ARCMIN_TO_DEG = 1 / 60f;
     const float ARCSEC_TO_DEG = 1 / (60f * 60f);
 
-    const int RADIUS = 75; // The distance from the origin to the Star GameObjects
+    const int RADIUS = 85; // The distance from the origin to the Star GameObjects
 
     /// <summary>
     /// Returns the position of the star in Unity's coordinates based on the Right Ascension and Declination
