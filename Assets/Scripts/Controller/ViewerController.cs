@@ -34,6 +34,8 @@ public class ViewerController : MonoBehaviour
 
     void Start()
     {
+        Screen.sleepTimeout = (int)SleepTimeout.NeverSleep;
+
         StarParent = new GameObject("Stars");
         ConstellationParent = new GameObject("Constellations");
 
