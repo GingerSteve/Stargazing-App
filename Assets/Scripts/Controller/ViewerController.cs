@@ -15,6 +15,9 @@ public class ViewerController : MonoBehaviour
     public GameObject StarParent { get; private set; }
     public GameObject ConstellationParent { get; private set; }
 
+    int _currentCulture = -1;
+    List<ConstellationView> _constellationViews = new List<ConstellationView>();
+
     public static ViewerController Instance { get; private set; }
     object _lock = new object();
 
@@ -40,37 +43,32 @@ public class ViewerController : MonoBehaviour
         foreach (var star in stars)
             StarViews.Add(star.Id, StarView.Create(star));
 
-        CycleCulturesAsync();
+        DisplayNextCulture();
     }
 
     /// <summary>
-    /// Cycles through the cultures available and displays the constellations for each.
+    /// Switches the visible Culture to the next.
     /// In the future, this could be replaced with a menu allowing the user to choose a culture to view.
     /// </summary>
-    async void CycleCulturesAsync()
+    public void DisplayNextCulture()
     {
         var cultures = Culture.GetCultures();
-        var views = new List<ConstellationView>();
 
-        var i = 0;
-        while (Application.isPlaying)
-        {
-            // Destroy all currently visible constellations
-            foreach (var v in views)
-                Destroy(v.gameObject);
-            views.Clear();
+        _currentCulture++;
+        _currentCulture %= cultures.Count;
 
-            // Display the constellations for the next culture
-            var c = cultures[i];
-            Debug.Log("Showing constellations for " + c.Name);
+        // Destroy all currently visible constellations
+        foreach (var v in _constellationViews)
+            Destroy(v.gameObject);
+        _constellationViews.Clear();
 
-            var constellations = Constellation.GetConstellations(c.Id);
-            foreach (var con in constellations)
-                views.Add(ConstellationView.Create(con));
+        // Display the constellations for the next culture
+        var c = cultures[_currentCulture];
+        Debug.Log("Showing constellations for " + c.Name);
 
-            await Task.Delay(TimeSpan.FromSeconds(100));
-            i = (i + 1) % cultures.Count;
-        }
+        var constellations = Constellation.GetConstellations(c.Id);
+        foreach (var con in constellations)
+            _constellationViews.Add(ConstellationView.Create(con));
     }
 
     void OnApplicationQuit()

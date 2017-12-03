@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4180979221584366}
   - component: {fileID: 33184537292864826}
   - component: {fileID: 23388594746332404}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: StarPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -171,6 +171,38 @@
          result="composite2"
          id="feComposite5059" />
     </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4777">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood4767" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite4769" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="2"
+         result="blur"
+         id="feGaussianBlur4771" />
+      <feOffset
+         dx="0.4"
+         dy="0.4"
+         result="offset"
+         id="feOffset4773" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite4775" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -179,9 +211,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-736.17632"
-     inkscape:cy="3648.6037"
+     inkscape:zoom="0.7"
+     inkscape:cx="-533.9038"
+     inkscape:cy="3948.9303"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -212,7 +244,7 @@
      id="layer1">
     <g
        id="g4665"
-       transform="matrix(1.141217,0,0,1.1412294,-102.87035,-558.17657)"
+       transform="matrix(1.141217,0,0,1.1412294,-102.87035,-595.5943)"
        inkscape:export-filename="E:\Steve\Documents\My Documents\Code\Unity\Stargazing App\Assets\Images\Resources\compass.png"
        inkscape:export-xdpi="51.200562"
        inkscape:export-ydpi="51.200562"
@@ -243,7 +275,7 @@
     </g>
     <g
        id="g4655"
-       transform="matrix(3.0349103,0,0,3.0168078,306.06686,-261.21892)"
+       transform="matrix(3.0349103,0,0,3.0168078,306.06686,-298.63665)"
        inkscape:export-filename="E:\Steve\Documents\My Documents\Code\Unity\Stargazing App\Assets\Images\Resources\touch.png"
        inkscape:export-xdpi="51.174511"
        inkscape:export-ydpi="51.174511"
@@ -305,68 +337,51 @@
            sodipodi:type="star" />
       </g>
     </g>
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:5.82083321;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -133.38179,-723.78489 h 57.981967"
+       id="path2793"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:5.82083333;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       inkscape:transform-center-x="7.3767301"
+       inkscape:transform-center-y="1.3805244e-005"
+       d="m -109.18284,-700.40992 -12.63412,-11.68748 -12.63412,-11.68749 12.63412,-11.68748 12.63412,-11.68748"
+       id="path2803"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4557"
+       d="m -23.32811,-743.21552 40.999445,40.99944"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:5.82083321;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:5.82083321;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -23.32811,-702.21608 40.999443,-40.99944"
+       id="path4563"
+       inkscape:connector-curvature="0" />
     <g
-       id="g50"
+       id="g4582"
+       style="filter:url(#filter4777)"
+       transform="translate(52.160714,-0.75595238)"
        inkscape:export-filename="E:\Steve\Documents\My Documents\Code\Unity\Stargazing App\Assets\Images\menu.png"
-       inkscape:export-xdpi="41.858265"
-       inkscape:export-ydpi="41.858265"
-       transform="translate(-82.319014,-90.871639)">
-      <rect
-         transform="matrix(0.64880275,0,0,0.54746941,-35.979361,-252.19372)"
-         y="-718.12256"
-         x="-283.84024"
-         height="15"
-         width="100"
-         id="rect4506"
-         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.57972133;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;filter:url(#filter5061)" />
-      <rect
-         transform="matrix(0.64880275,0,0,0.54746941,-35.979361,-246.95083)"
-         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.57972133;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;filter:url(#filter5061)"
-         id="rect4514"
-         width="100"
-         height="15"
-         x="-283.84024"
-         y="-661.46143" />
-      <rect
-         transform="matrix(0.64880275,0,0,0.54746941,-35.979361,-249.57227)"
-         y="-689.79199"
-         x="-283.84024"
-         height="15"
-         width="100"
-         id="rect4516"
-         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.57972133;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;filter:url(#filter5061)" />
-    </g>
-    <g
-       id="g4561">
+       inkscape:export-xdpi="42.161888"
+       inkscape:export-ydpi="42.161888">
       <path
          inkscape:connector-curvature="0"
-         id="path2793"
-         d="m -133.38179,-723.78488 h 57.981967"
-         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6.04202223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="path4569"
+         d="m -315.91256,-719.82694 h 64.67923"
+         style="fill:none;stroke:#ffffff;stroke-width:5.82083321;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
-         sodipodi:nodetypes="ccccc"
-         inkscape:connector-curvature="0"
-         id="path2803"
-         d="m -109.18284,-700.40992 -12.63412,-11.68748 -12.63412,-11.68749 12.63412,-11.68748 12.63412,-11.68748"
-         inkscape:transform-center-y="1.3805244e-005"
-         inkscape:transform-center-x="7.3767301"
-         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:6.04202223;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
-    </g>
-    <g
-       id="g4567"
-       inkscape:export-filename="E:\Steve\Documents\My Documents\Code\Unity\Stargazing App\Assets\Images\exit.png"
-       inkscape:export-xdpi="71.815147"
-       inkscape:export-ydpi="71.815147">
-      <path
-         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6.04202223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m -124.89053,-654.48204 40.999445,40.99944"
-         id="path4557"
+         style="fill:none;stroke:#ffffff;stroke-width:5.82083321;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -315.91256,-738.40216 h 64.67923"
+         id="path4575"
          inkscape:connector-curvature="0" />
       <path
          inkscape:connector-curvature="0"
-         id="path4563"
-         d="m -124.89053,-613.4826 40.999443,-40.99944"
-         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6.04202223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="path4577"
+         d="m -315.91256,-701.2517 h 64.67923"
+         style="fill:none;stroke:#ffffff;stroke-width:5.82083321;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
   </g>
 </svg>

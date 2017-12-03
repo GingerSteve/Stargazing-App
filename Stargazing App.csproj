@@ -85,9 +85,13 @@
     <Compile Include="Assets\Scripts\Controller\BillboardController.cs" />
     <Compile Include="Assets\Scripts\Controller\CameraController.cs" />
     <Compile Include="Assets\Scripts\Controller\MenuController.cs" />
+    <Compile Include="Assets\Scripts\Controller\ModeButtonController.cs" />
+    <Compile Include="Assets\Scripts\Controller\UIButtonController.cs" />
     <Compile Include="Assets\Scripts\Controller\ViewerController.cs" />
     <Compile Include="Assets\Scripts\DAL\DAL.cs" />
     <Compile Include="Assets\Scripts\DAL\SQLite.cs" />
+    <Compile Include="Assets\Scripts\Enum\ControlMode.cs" />
+    <Compile Include="Assets\Scripts\Enum\ScreenPosition.cs" />
     <Compile Include="Assets\Scripts\Model\Constellation.cs" />
     <Compile Include="Assets\Scripts\Model\ConstellationBorder.cs" />
     <Compile Include="Assets\Scripts\Model\Culture.cs" />

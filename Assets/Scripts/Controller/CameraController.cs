@@ -1,22 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
+/// <summary>
+/// Controls the camera rotation and input
+/// </summary>
 public class CameraController : MonoBehaviour
 {
-    public enum ControlMode
-    {
-        Gyro,
-        Touch,
-        Mouse
-    };
+    public ControlMode Mode { get; set; }
+    public DeviceOrientation CurrentOrientation { get; private set; }
 
-    public Sprite CompassSprite, ArrowsSprite;
-    public Image ModeButton;
-
-    ControlMode _mode;
     Quaternion _origRotation;
     Gyroscope _gyro;
-    DeviceOrientation _currentOrientation;
     GameObject _parent;
     float _rotationX;
     float _rotationY;
@@ -34,25 +27,19 @@ public class CameraController : MonoBehaviour
         // Set the starting control mode and orientation
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-            _mode = ControlMode.Mouse;
+            Mode = ControlMode.Mouse;
         }
         else if (SystemInfo.deviceType == DeviceType.Handheld && SystemInfo.supportsGyroscope)
         {
-            _mode = ControlMode.Gyro;
+            Mode = ControlMode.Gyro;
 
             _gyro = Input.gyro;
             _gyro.enabled = true;
         }
         else
         {
-            _mode = ControlMode.Touch;
+            Mode = ControlMode.Touch;
         }
-
-        // Get the button for switching modes
-        if (SystemInfo.deviceType == DeviceType.Handheld && SystemInfo.supportsGyroscope)
-            SetImageSource();
-        else
-            ModeButton.enabled = false;
 
         // Add a parent object to the camera, for additional transforms
         _parent = new GameObject("CameraParent");
@@ -60,18 +47,18 @@ public class CameraController : MonoBehaviour
         transform.parent = _parent.transform;
         _origRotation = transform.localRotation;
 
-        _currentOrientation = DeviceOrientation.Portrait;
+        CurrentOrientation = DeviceOrientation.Portrait;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.deviceOrientation != _currentOrientation)
+        if (Input.deviceOrientation != CurrentOrientation)
             SetOrientation();
 
         if (enabled)
         {
-            if (_mode == ControlMode.Mouse)
+            if (Mode == ControlMode.Mouse)
             {
                 if (Input.GetMouseButton(0))
                 {
@@ -83,7 +70,7 @@ public class CameraController : MonoBehaviour
                 else
                     DecelerateCamera();
             }
-            else if (_mode == ControlMode.Touch)
+            else if (Mode == ControlMode.Touch)
             {
                 if (Input.touches.Length > 0)
                 {
@@ -95,7 +82,7 @@ public class CameraController : MonoBehaviour
                 else
                     DecelerateCamera();
             }
-            else if (_mode == ControlMode.Gyro)
+            else if (Mode == ControlMode.Gyro)
             {
                 // Need to invert gyroscope z and w axis, and rotate by 90 degrees on the x axis
                 Quaternion rotate = new Quaternion(_gyro.attitude.x, _gyro.attitude.y, -_gyro.attitude.z, -_gyro.attitude.w);
@@ -114,7 +101,7 @@ public class CameraController : MonoBehaviour
 
         // Because the screen orientation is locked, the input we're recieving is always in Portrait mode
         // So we have to handle things differently depending on orientation
-        switch(_currentOrientation)
+        switch(CurrentOrientation)
         {
             case DeviceOrientation.Portrait:
                 _rotationX -= _velocityX;
@@ -175,7 +162,7 @@ public class CameraController : MonoBehaviour
     }
 
     /// <summary> Handles orientation changes </summary>
-    void SetOrientation()
+    public void SetOrientation()
     {
         // Ignore changes to FaceUp and FaceDown
         switch (Input.deviceOrientation)
@@ -184,8 +171,7 @@ public class CameraController : MonoBehaviour
             case DeviceOrientation.LandscapeLeft:
             case DeviceOrientation.LandscapeRight:
             case DeviceOrientation.PortraitUpsideDown:
-                _currentOrientation = Input.deviceOrientation;
-                SetModeButtonPosition();
+                CurrentOrientation = Input.deviceOrientation;
                 SetCameraRotation();
                 break;
         }
@@ -198,9 +184,9 @@ public class CameraController : MonoBehaviour
     /// </summary>
     void SetCameraRotation()
     {
-        if (_mode == ControlMode.Touch)
+        if (Mode == ControlMode.Touch)
         {
-            switch (_currentOrientation)
+            switch (CurrentOrientation)
             {
                 case DeviceOrientation.Portrait:
                     _parent.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -218,69 +204,5 @@ public class CameraController : MonoBehaviour
         }
         else
             _parent.transform.rotation = Quaternion.Euler(0, 0, 0);
-    }
-
-    /// <summary>
-    /// Sets the position and rotation of the mode button.
-    /// Used to position the button correctly depending on device orientation.
-    /// </summary>
-    void SetModeButtonPosition()
-    {
-        var d = 40; // The mode button offset from its anchor
-        var rect = ModeButton.rectTransform;
-        var trans = ModeButton.transform;
-
-        switch (_currentOrientation)
-        {
-            case DeviceOrientation.Portrait:
-                rect.anchorMax = new Vector2(0, 0);
-                rect.anchorMin = new Vector2(0, 0);
-                rect.anchoredPosition = new Vector2(d, d);
-                trans.rotation = Quaternion.Euler(0, 0, 0);
-                break;
-            case DeviceOrientation.LandscapeLeft:
-                rect.anchorMax = new Vector2(0, 1);
-                rect.anchorMin = new Vector2(0, 1);
-                rect.anchoredPosition = new Vector2(d, -d);
-                trans.rotation = Quaternion.Euler(0, 0, -90);
-                break;
-            case DeviceOrientation.LandscapeRight:
-                rect.anchorMax = new Vector2(1, 0);
-                rect.anchorMin = new Vector2(1, 0);
-                rect.anchoredPosition = new Vector2(-d, d);
-                trans.rotation = Quaternion.Euler(0, 0, 90);
-                break;
-            case DeviceOrientation.PortraitUpsideDown:
-                rect.anchorMax = new Vector2(1, 1);
-                rect.anchorMin = new Vector2(1, 1);
-                rect.anchoredPosition = new Vector2(-d, -d);
-                trans.rotation = Quaternion.Euler(0, 0, 180);
-                break;
-        }
-    }
-
-    /// <summary> Toggle the control mode between gyroscope controls and touch controls </summary>
-    public void ToggleMode()
-    {
-        _mode = _mode == ControlMode.Gyro ? ControlMode.Touch : ControlMode.Gyro;
-
-        SetImageSource();
-        SetOrientation();
-    }
-
-    /// <summary> Set the 'toggle modes' button image </summary>
-    public void SetImageSource()
-    {
-        ModeButton.sprite = _mode == ControlMode.Gyro ? ArrowsSprite : CompassSprite;
-    }
-
-    public DeviceOrientation GetOrientation()
-    {
-        return _currentOrientation;
-    }
-
-    public ControlMode GetControlMode()
-    {
-        return _mode;
     }
 }

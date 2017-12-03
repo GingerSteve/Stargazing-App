@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Shows and populates the MenuCanvas
+/// </summary>
 public class MenuController : MonoBehaviour
 {
     public Canvas ViewerCanvas;
@@ -19,7 +22,7 @@ public class MenuController : MonoBehaviour
 
     public void OpenMenu(Constellation constellation)
     {
-        Screen.orientation = (ScreenOrientation)CameraScript.GetOrientation();
+        Screen.orientation = (ScreenOrientation)CameraScript.CurrentOrientation;
         Screen.orientation = ScreenOrientation.AutoRotation;
 
         NameText.text = constellation.Name;
