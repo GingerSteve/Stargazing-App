@@ -30,7 +30,7 @@ public class ConstellationView : MonoBehaviour
         constellationView.Constellation = con;
 
         // Set the canvas position and text
-        obj.GetComponentInChildren<Canvas>().transform.position = GetPosition(con);
+        obj.GetComponentInChildren<Canvas>().transform.position = GetPosition(con) / 1.1f;
         obj.GetComponentInChildren<Text>().text = con.Name;
 
 
