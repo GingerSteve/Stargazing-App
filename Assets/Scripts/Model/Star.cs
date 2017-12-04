@@ -15,8 +15,8 @@ public class Star
     public float? DeclinationArcSeconds { get; private set; }
     public float? ApparentMagnitude { get; private set; }
 
-    public static List<Star> GetStars()
+    public static List<Star> GetStars(float minMagnitude)
     {
-        return DAL.GetStars();
+        return DAL.GetStars(minMagnitude);
     }
 }

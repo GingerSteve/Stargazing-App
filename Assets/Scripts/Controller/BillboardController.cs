@@ -12,6 +12,8 @@ public class BillboardController : MonoBehaviour
     {
         _camera = Camera.main;
         _cameraController = _camera.GetComponent<CameraController>();
+
+        Update();
     }
 
     void Update()

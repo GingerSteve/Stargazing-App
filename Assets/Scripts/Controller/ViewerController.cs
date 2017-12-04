@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class ViewerController : MonoBehaviour
 {
+    const float magnitudeCutoff = 6.5f;
+
     public MenuController Menu;
 
     public Dictionary<int, StarView> StarViews { get; private set; }
@@ -39,7 +41,7 @@ public class ViewerController : MonoBehaviour
         ConstellationParent = new GameObject("Constellations");
 
         // Get all the stars in the database and display StarViews
-        var stars = Star.GetStars();
+        var stars = Star.GetStars(magnitudeCutoff);
 
         StarViews = new Dictionary<int, StarView>();
         foreach (var star in stars)

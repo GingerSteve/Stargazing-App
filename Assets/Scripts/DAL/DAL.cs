@@ -61,11 +61,20 @@ public class DAL
     }
 
     /// <summary>
-    /// Gets all Stars in the database
+    /// Gets all Stars in the database that are either: brighter than minMagnitude OR in a constellation
     /// </summary>
-    public static List<Star> GetStars()
+    public static List<Star> GetStars(float minMagnitude)
     {
-        return _connection.Query<Star>("SELECT * FROM Star");
+        var query = "SELECT s.* FROM Star s " +
+            "JOIN ConstellationSegment cs " +
+                "ON s.Id = cs.StarA " +
+                "OR s.Id = cs.StarB " +
+            "GROUP BY s.id " +
+            "UNION " +
+            "SELECT s.* FROM Star s " +
+            "WHERE s.ApparentMagnitude < " + minMagnitude;
+
+        return _connection.Query<Star>(query);
     }
 
     /// <summary>
