@@ -38,7 +38,7 @@ public class StarView : MonoBehaviour
         if (scale.HasValue)
             mag = scale.Value;
         else if (Star.ApparentMagnitude.HasValue)
-            mag = 1f / (Star.ApparentMagnitude.Value + 2.4f);
+            mag = 2f / (Star.ApparentMagnitude.Value + 3.5f);
 
         gameObject.transform.localScale = new Vector3(mag, mag, mag);
     }

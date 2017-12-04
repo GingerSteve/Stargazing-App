@@ -73,9 +73,8 @@ public class CameraController : MonoBehaviour
             {
                 if (Input.touches.Length > 0)
                 {
-                    // 0.02f was previously Time.deltaTime, but this was behaving erratically when showing large amounts of stars
-                    _velocityX = Input.touches[0].deltaPosition.x * 0.02f * _touchSensitivity;
-                    _velocityY = Input.touches[0].deltaPosition.y * 0.02f * _touchSensitivity;
+                    _velocityX = Input.touches[0].deltaPosition.x * Time.deltaTime * _touchSensitivity;
+                    _velocityY = Input.touches[0].deltaPosition.y * Time.deltaTime * _touchSensitivity;
 
                     RotateCamera();
                 }

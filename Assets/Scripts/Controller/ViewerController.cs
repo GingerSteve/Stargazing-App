@@ -35,7 +35,7 @@ public class ViewerController : MonoBehaviour
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep; // Set the screen to stay on while the app is active
-        _magnitudeCutoff = SystemInfo.deviceType == DeviceType.Desktop ? 6.5f : 6f; // Can show a few more on faster devices
+        _magnitudeCutoff = SystemInfo.deviceType == DeviceType.Desktop ? 6.5f : 5.5f; // Can show a few more on faster devices
 
         // Create parent objects for stars and constellations
         StarParent = new GameObject("Stars");
