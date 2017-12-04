@@ -7,7 +7,6 @@ using UnityEngine;
 /// </summary>
 public class ViewerController : MonoBehaviour
 {
-    const float magnitudeCutoff = 6.5f;
 
     public MenuController Menu;
 
@@ -15,6 +14,7 @@ public class ViewerController : MonoBehaviour
     public GameObject StarParent { get; private set; }
     public GameObject ConstellationParent { get; private set; }
 
+    float _magnitudeCutoff;
     int _currentCulture = -1;
     List<ConstellationView> _constellationViews = new List<ConstellationView>();
 
@@ -35,13 +35,14 @@ public class ViewerController : MonoBehaviour
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep; // Set the screen to stay on while the app is active
+        _magnitudeCutoff = SystemInfo.deviceType == DeviceType.Desktop ? 6.5f : 6f; // Can show a few more on faster devices
 
         // Create parent objects for stars and constellations
         StarParent = new GameObject("Stars");
         ConstellationParent = new GameObject("Constellations");
 
         // Get all the stars in the database and display StarViews
-        var stars = Star.GetStars(magnitudeCutoff);
+        var stars = Star.GetStars(_magnitudeCutoff);
 
         StarViews = new Dictionary<int, StarView>();
         foreach (var star in stars)

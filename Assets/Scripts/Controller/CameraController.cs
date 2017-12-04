@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     // Initialize controller
     void Start()
     {
-        _touchSensitivity = 320f / Screen.dpi + 1; // This feels right on the two mobile devices I have, but should be tested on more devices
+        _touchSensitivity = 640f / Screen.dpi + 1; // This feels right on the two mobile devices I have, but should be tested on more devices
 
         // Set the starting control mode and orientation
         if (SystemInfo.deviceType == DeviceType.Desktop)
@@ -73,8 +73,9 @@ public class CameraController : MonoBehaviour
             {
                 if (Input.touches.Length > 0)
                 {
-                    _velocityX = Input.touches[0].deltaPosition.x * Time.deltaTime * _touchSensitivity;
-                    _velocityY = Input.touches[0].deltaPosition.y * Time.deltaTime * _touchSensitivity;
+                    // 0.02f was previously Time.deltaTime, but this was behaving erratically when showing large amounts of stars
+                    _velocityX = Input.touches[0].deltaPosition.x * 0.02f * _touchSensitivity;
+                    _velocityY = Input.touches[0].deltaPosition.y * 0.02f * _touchSensitivity;
 
                     RotateCamera();
                 }
