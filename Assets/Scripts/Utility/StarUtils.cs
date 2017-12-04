@@ -19,8 +19,24 @@ public class StarUtils
     /// </summary>
     public static Vector3 GetStartPosition(Star star)
     {
-        var ra = 2 * Mathf.PI * (star.RAHours * HOURS_TO_DAYS + star.RAMinutes * MIN_TO_DAYS + star.RASeconds * SEC_TO_DAYS);
-        var dec = Mathf.Deg2Rad * star.DeclinationSignFactor * (star.DeclinationDegrees + star.DeclinationArcMinutes * ARCMIN_TO_DEG + star.DeclinationArcSeconds * ARCSEC_TO_DEG);
+        float ra = 0f;
+        float dec = 0f;
+
+        if (star.RARadians != null && star.DecRadians != null)
+        {
+            ra = star.RARadians.Value;
+            dec = star.DecRadians.Value;
+        }
+        else if (star.RAHours != null && star.RAMinutes != null && star.RASeconds != null &&
+            star.DeclinationSignFactor != null && star.DeclinationDegrees != null && star.DeclinationArcMinutes != null && star.DeclinationArcSeconds != null)
+        {
+            ra = 2 * Mathf.PI * (star.RAHours.Value * HOURS_TO_DAYS + star.RAMinutes.Value * MIN_TO_DAYS + star.RASeconds.Value * SEC_TO_DAYS);
+            dec = Mathf.Deg2Rad * star.DeclinationSignFactor.Value * (star.DeclinationDegrees.Value + star.DeclinationArcMinutes.Value * ARCMIN_TO_DEG + star.DeclinationArcSeconds.Value * ARCSEC_TO_DEG);
+        }
+        else
+        {
+            return new Vector3(0, 0, 0);
+        }
 
         var x = Mathf.Abs(Mathf.Cos(ra) * RADIUS * Mathf.Cos(dec));
         var y = Mathf.Abs(Mathf.Sin(dec) * RADIUS);
@@ -30,7 +46,7 @@ public class StarUtils
             x = -x;
         if (ra >= Mathf.PI || ra <= 0)
             z = -z;
-        y *= star.DeclinationSignFactor;
+        y *= dec < 0 ? -1 : 1;
 
         return new Vector3(x, y, z);
     }

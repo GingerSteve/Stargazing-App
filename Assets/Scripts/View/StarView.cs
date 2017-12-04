@@ -23,6 +23,23 @@ public class StarView : MonoBehaviour
         var starView = obj.AddComponent<StarView>();
         starView.Star = star;
 
+        starView.SetScale();
+
         return starView;
+    }
+
+    /// <summary>
+    /// Sets the scale of the Star GameObject to the scale specified, or to the appropriate scale based on apparent magnitude
+    /// </summary>
+    public void SetScale(float? scale = null)
+    {
+        var mag = 1f;
+
+        if (scale.HasValue)
+            mag = scale.Value;
+        else if (Star.ApparentMagnitude.HasValue)
+            mag = 1f / (Star.ApparentMagnitude.Value + 2.4f);
+
+        gameObject.transform.localScale = new Vector3(mag, mag, mag);
     }
 }
