@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     // Initialize controller
     void Start()
     {
-        _touchSensitivity = 640f / Screen.dpi + 1; // This feels right on the two mobile devices I have, but should be tested on more devices
+        _touchSensitivity = 320f / Screen.dpi + 1; // This feels right on the two mobile devices I have, but should be tested on more devices
 
         // Set the starting control mode and orientation
         if (SystemInfo.deviceType == DeviceType.Desktop)
