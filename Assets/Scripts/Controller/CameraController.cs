@@ -164,29 +164,27 @@ public class CameraController : MonoBehaviour
     }
 
     /// <summary> Handles orientation changes </summary>
-    public void SetOrientation()
+    void SetOrientation()
     {
-        var from = CurrentOrientation;
-        var to = CurrentOrientation;
-
         // Ignore FaceUp and FaceDown rotations
         if (Input.deviceOrientation == DeviceOrientation.Portrait ||
             Input.deviceOrientation == DeviceOrientation.LandscapeLeft ||
             Input.deviceOrientation == DeviceOrientation.LandscapeRight ||
             Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown)
         {
-            CurrentOrientation = Input.deviceOrientation;
-            to = CurrentOrientation;
-        }
+            var from = CurrentOrientation;
+            var to = Input.deviceOrientation;
 
-        SetCameraParentRotation(from, to);
+            CurrentOrientation = to;
+            SetCameraParentRotation(from, to);
+        }
     }
 
     /// <summary>
     /// Sets the rotation of the camera's parent object.
     /// This is used to turn the camera when the orientation changes.
     /// </summary>
-    void SetCameraParentRotation(DeviceOrientation from, DeviceOrientation to)
+    public void SetCameraParentRotation(DeviceOrientation from, DeviceOrientation to)
     {
         if (Mode == ControlMode.Touch)
         {
@@ -214,8 +212,7 @@ public class CameraController : MonoBehaviour
 
             RotateCamera();
         }
-        else // Gyro mode
+        else
             _parent.transform.rotation = Quaternion.Euler(0, 0, 0);
-
     }
 }

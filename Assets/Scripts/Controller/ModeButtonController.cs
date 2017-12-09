@@ -26,7 +26,7 @@ public class ModeButtonController : MonoBehaviour
     public void ToggleMode()
     {
         Camera.Mode = Camera.Mode == ControlMode.Gyro ? ControlMode.Touch : ControlMode.Gyro;
-        Camera.SetOrientation();
+        Camera.SetCameraParentRotation(Camera.CurrentOrientation, Camera.CurrentOrientation);
         SetImageSource();
     }
 
