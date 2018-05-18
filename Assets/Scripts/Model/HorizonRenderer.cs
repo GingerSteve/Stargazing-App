@@ -14,8 +14,6 @@ public class HorizonRenderer : MonoBehaviour {
     public float theta = 180;
     public int resolution = 1000;//how many vertices there will be
 
-    private float transSlider = 0.0f;//transparency value of the horizon
-
     private Vector3[] positions;
     public LineRenderer lr;
 
@@ -37,24 +35,6 @@ public class HorizonRenderer : MonoBehaviour {
         {
             lr.SetPosition(i, positions[i]);
         }
-    }
-
-    void OnGUI()
-    {
-
-        if(Input.GetKey("left"))
-        {
-            transSlider -= 0.1f;
-        }
-        else if(Input.GetKey("right"))
-        {
-            transSlider += 0.1f;
-        }
-
-        transSlider = GUI.HorizontalSlider(new Rect(20, 135, 175, 30), transSlider, 0.0f, 10.0f);
-        Color newColor = lr.material.color;
-        newColor.a = transSlider;
-        lr.material.color = newColor;
     }
 
     /*
