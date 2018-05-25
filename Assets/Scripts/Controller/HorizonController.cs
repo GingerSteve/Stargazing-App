@@ -4,36 +4,36 @@ using UnityEngine;
 //using UnityEngine.UI;
 
 [RequireComponent(typeof(LineRenderer))]
-public class HorizonRenderer : MonoBehaviour {
+public class HorizonController : MonoBehaviour {
 
 
-    public float width = 90;
-    public float height = 90;
-    public float x = 0;//start x pos
-    public float y = 0;//start y pos
-    public float theta = 180;
-    public int resolution = 1000;//how many vertices there will be
+    public float Width = 90;
+    public float Height = 90;
+    public float XPos = 0;//start x pos
+    public float YPos = 0;//start y pos
+    public float Theta = 180;
+    public int Resolution = 50;//how many vertices there will be
+
+    private float lineWidth = 0.25f;
 
     private Vector3[] positions;
-    public LineRenderer lr;
+    private LineRenderer lineRen;
+
 
     void Start()
     {
-        positions = CreateEllipse(width, height, x, y, theta, resolution);
-        lr = GetComponent<LineRenderer>();
+        positions = CreateEllipse(Width, Height, XPos, YPos, Theta, Resolution);
+        lineRen = GetComponent<LineRenderer>();
 
         //Set vertices and width 
-        lr.SetVertexCount(resolution + 1);
-        lr.SetWidth(0.25f, 0.25f);
-
-        //Set Colour and Shader
-        lr.material.color = Color.yellow;
-        lr.material.shader = Shader.Find("Specular");
+        lineRen.positionCount = Resolution + 1;
+        lineRen.startWidth = lineWidth;
+        lineRen.endWidth = lineWidth;
 
         //Use the line renderer to place connect each vertex
-        for (int i = 0; i <= resolution; i++)
+        for (int i = 0; i <= Resolution; i++)
         {
-            lr.SetPosition(i, positions[i]);
+            lineRen.SetPosition(i, positions[i]);
         }
     }
 
@@ -49,7 +49,7 @@ public class HorizonRenderer : MonoBehaviour {
         for (int i = 0; i <= resolution; i++)
         {
             float angle = (float)i / (float)resolution * 2.0f * Mathf.PI;//calculate the angle in the circle for the pos i
-            positions[i] = new Vector3(width * Mathf.Cos(angle), 0.0f,height * Mathf.Sin(angle));//create new Vector3 based on the angle
+            positions[i] = new Vector3(w * Mathf.Cos(angle), 0.0f, h * Mathf.Sin(angle));//create new Vector3 based on the angle
             positions[i] = axis * positions[i] + center;//calculate it's new position
         }
 
