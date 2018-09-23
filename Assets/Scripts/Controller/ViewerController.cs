@@ -49,30 +49,39 @@ public class ViewerController : MonoBehaviour
             StarViews.Add(star.Id, StarView.Create(star));
 
         // Display the constellations for the first culture
-        DisplayNextCulture();
+        //DisplayNextCulture();
+		DisplayNextCulture(0);
     }
 
     /// <summary>
-    /// Switches the visible Culture to the next.
-    /// In the future, this could be replaced with a menu allowing the user to choose a culture to view.
+    /// Switches the visible Culture.
+    /// This method has been modified to accept an integer from a dropdown call. 
+	/// In the future any additional cultures need only be added to the dropdown options
+	/// as long as their dropdown position corresponds to their postion in the culture db
     /// </summary>
-    public void DisplayNextCulture()
+	/// 
+
+
+	public void DisplayNextCulture(int index)
     {
         var cultures = Culture.GetCultures();
 
-        _currentCulture++;
-        _currentCulture %= cultures.Count;
+		// This 'if' statement protects against an index mismatch 
+		if (cultures [index] != null) {
+			
+			_currentCulture = index;
 
-        // Destroy all currently visible constellations
-        foreach (var v in _constellationViews)
-            Destroy(v.gameObject);
-        _constellationViews.Clear();
+			// Destroy all currently visible constellations
+			foreach (var v in _constellationViews)
+				Destroy (v.gameObject);
+			_constellationViews.Clear ();
 
-        // Display the constellations for the next culture
-        var c = cultures[_currentCulture];
-        var constellations = Constellation.GetConstellations(c.Id);
-        foreach (var con in constellations)
-            _constellationViews.Add(ConstellationView.Create(con));
+			// Display the constellations for the next culture
+			var c = cultures [_currentCulture];
+			var constellations = Constellation.GetConstellations (c.Id);
+			foreach (var con in constellations)
+				_constellationViews.Add (ConstellationView.Create (con));
+		}
     }
 
     void OnApplicationQuit()

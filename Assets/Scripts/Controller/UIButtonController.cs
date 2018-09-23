@@ -81,4 +81,15 @@ public class UIButtonController : MonoBehaviour
                 break;
         }
     }
+
+	public void ToggleActive()
+	{
+		if (gameObject.activeSelf) {
+			gameObject.SetActive (false);
+		} else {
+			gameObject.SetActive (true);
+		}
+		Update ();
+
+	}
 }
