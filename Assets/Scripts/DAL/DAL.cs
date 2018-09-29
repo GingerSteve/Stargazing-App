@@ -6,6 +6,8 @@ using System;
 
 public class DAL
 {
+    const int DATABASE_VERSION = 0;
+
     static string _databaseName = "stargazing.db";
     static SQLiteConnection _connection;
 
@@ -15,41 +17,37 @@ public class DAL
     static DAL()
     {
         string path;
-        string newPath;
 
-        if (Application.platform == RuntimePlatform.WindowsEditor)
-            path = string.Format(@"Assets/StreamingAssets/{0}", _databaseName);
-        else
+        // TODO: Test on all platforms
+        switch (Application.platform)
         {
-            path = string.Format("{0}/{1}", Application.persistentDataPath, _databaseName);
+            case RuntimePlatform.WindowsEditor:
+            case RuntimePlatform.OSXEditor:
+            case RuntimePlatform.LinuxEditor:
+                path = "Assets/StreamingAssets/" + _databaseName;
+                break;
+            case RuntimePlatform.Android:
+                path = Application.persistentDataPath + "/" + _databaseName;
 
-            // If it's a debug build, delete and re-copy the database when opening the app, so changes are reflected
-            if (File.Exists(path) && Debug.isDebugBuild)
-                File.Delete(path);
-        }
-
-        if (!File.Exists(path))
-        {
-            switch (Application.platform)
-            {
-                case RuntimePlatform.Android:
-                    // On Android, the database file is stored in the JAR
+                // On Android, the database file is stored in the JAR. We need to copy it to persistent storage to access it.
+                // Only copy the database if the stored version and packaged versions are different
+                if (DATABASE_VERSION != PlayerPrefs.GetInt("dataVersion"))
+                {
                     var loadDb = new WWW("jar:file://" + Application.dataPath + "!/assets/" + _databaseName);
 
                     var start = DateTime.Now;
                     while (!loadDb.isDone && (DateTime.Now - start).Seconds < 30) { } // Wait for the file to open
 
                     File.WriteAllBytes(path, loadDb.bytes);
-                    break;
-                case RuntimePlatform.IPhonePlayer:
-                    newPath = Application.dataPath + "/Raw/" + _databaseName;
-                    File.Copy(newPath, path);
-                    break;
-                default:
-                    newPath = Application.dataPath + "/StreamingAssets/" + _databaseName;
-                    File.Copy(newPath, path);
-                    break;
-            }
+                    PlayerPrefs.SetInt("dataVersion", DATABASE_VERSION);
+                }
+                break;
+            case RuntimePlatform.IPhonePlayer:
+                path = Application.dataPath + "/Raw/" + _databaseName;
+                break;
+            default:
+                path =  Application.dataPath + "/StreamingAssets/" + _databaseName;
+                break;
         }
 
         _connection = new SQLiteConnection(path, SQLiteOpenFlags.ReadOnly);
